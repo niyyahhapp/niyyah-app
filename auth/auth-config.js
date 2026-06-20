@@ -1,4 +1,4 @@
 window.NIYYAH_AUTH_CONFIG = {
-  supabaseUrl: "PASTE_SUPABASE_PROJECT_URL_HERE",
-  supabaseAnonKey: "PASTE_SUPABASE_PUBLISHABLE_ANON_KEY_HERE"
+  supabaseUrl: "https://uaboxfabwsqptcwqvtdc.supabase.co",
+  supabaseAnonKey: "sb_publishable_xdQhjQptDlLmQQ6Vi4_9qQ_Nt3Xm8gN"
 };
