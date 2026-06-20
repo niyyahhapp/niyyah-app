@@ -1,0 +1,640 @@
+[
+  {
+    "id": 1,
+    "name": "Al-Fatihah",
+    "arabicName": "الفاتحة",
+    "translatedName": "The Opener",
+    "versesCount": 7,
+    "includedAyahCount": 7,
+    "juzNumbers": [
+      1
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Al-Mujadila",
+    "arabicName": "المجادلة",
+    "translatedName": "The Pleading Woman",
+    "versesCount": 22,
+    "includedAyahCount": 22,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Al-Hashr",
+    "arabicName": "الحشر",
+    "translatedName": "The Exile",
+    "versesCount": 24,
+    "includedAyahCount": 24,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Al-Mumtahanah",
+    "arabicName": "الممتحنة",
+    "translatedName": "She that is to be examined",
+    "versesCount": 13,
+    "includedAyahCount": 13,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 61,
+    "name": "As-Saf",
+    "arabicName": "الصف",
+    "translatedName": "The Ranks",
+    "versesCount": 14,
+    "includedAyahCount": 14,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Al-Jumu'ah",
+    "arabicName": "الجمعة",
+    "translatedName": "The Congregation, Friday",
+    "versesCount": 11,
+    "includedAyahCount": 11,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Al-Munafiqun",
+    "arabicName": "المنافقون",
+    "translatedName": "The Hypocrites",
+    "versesCount": 11,
+    "includedAyahCount": 11,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 64,
+    "name": "At-Taghabun",
+    "arabicName": "التغابن",
+    "translatedName": "The Mutual Disillusion",
+    "versesCount": 18,
+    "includedAyahCount": 18,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 65,
+    "name": "At-Talaq",
+    "arabicName": "الطلاق",
+    "translatedName": "The Divorce",
+    "versesCount": 12,
+    "includedAyahCount": 12,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 66,
+    "name": "At-Tahrim",
+    "arabicName": "التحريم",
+    "translatedName": "The Prohibition",
+    "versesCount": 12,
+    "includedAyahCount": 12,
+    "juzNumbers": [
+      28
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Al-Mulk",
+    "arabicName": "الملك",
+    "translatedName": "The Sovereignty",
+    "versesCount": 30,
+    "includedAyahCount": 30,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Al-Qalam",
+    "arabicName": "القلم",
+    "translatedName": "The Pen",
+    "versesCount": 52,
+    "includedAyahCount": 52,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 69,
+    "name": "Al-Haqqah",
+    "arabicName": "الحاقة",
+    "translatedName": "The Reality",
+    "versesCount": 52,
+    "includedAyahCount": 52,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Al-Ma'arij",
+    "arabicName": "المعارج",
+    "translatedName": "The Ascending Stairways",
+    "versesCount": 44,
+    "includedAyahCount": 44,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 71,
+    "name": "Nuh",
+    "arabicName": "نوح",
+    "translatedName": "Noah",
+    "versesCount": 28,
+    "includedAyahCount": 28,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Al-Jinn",
+    "arabicName": "الجن",
+    "translatedName": "The Jinn",
+    "versesCount": 28,
+    "includedAyahCount": 28,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Al-Muzzammil",
+    "arabicName": "المزمل",
+    "translatedName": "The Enshrouded One",
+    "versesCount": 20,
+    "includedAyahCount": 20,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Al-Muddaththir",
+    "arabicName": "المدثر",
+    "translatedName": "The Cloaked One",
+    "versesCount": 56,
+    "includedAyahCount": 56,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Al-Qiyamah",
+    "arabicName": "القيامة",
+    "translatedName": "The Resurrection",
+    "versesCount": 40,
+    "includedAyahCount": 40,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Al-Insan",
+    "arabicName": "الانسان",
+    "translatedName": "The Man",
+    "versesCount": 31,
+    "includedAyahCount": 31,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Al-Mursalat",
+    "arabicName": "المرسلات",
+    "translatedName": "The Emissaries",
+    "versesCount": 50,
+    "includedAyahCount": 50,
+    "juzNumbers": [
+      29
+    ]
+  },
+  {
+    "id": 78,
+    "name": "An-Naba",
+    "arabicName": "النبإ",
+    "translatedName": "The Tidings",
+    "versesCount": 40,
+    "includedAyahCount": 40,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 79,
+    "name": "An-Nazi'at",
+    "arabicName": "النازعات",
+    "translatedName": "Those who drag forth",
+    "versesCount": 46,
+    "includedAyahCount": 46,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 80,
+    "name": "'Abasa",
+    "arabicName": "عبس",
+    "translatedName": "He Frowned",
+    "versesCount": 42,
+    "includedAyahCount": 42,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 81,
+    "name": "At-Takwir",
+    "arabicName": "التكوير",
+    "translatedName": "The Overthrowing",
+    "versesCount": 29,
+    "includedAyahCount": 29,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Al-Infitar",
+    "arabicName": "الإنفطار",
+    "translatedName": "The Cleaving",
+    "versesCount": 19,
+    "includedAyahCount": 19,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Al-Mutaffifin",
+    "arabicName": "المطففين",
+    "translatedName": "The Defrauding",
+    "versesCount": 36,
+    "includedAyahCount": 36,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Al-Inshiqaq",
+    "arabicName": "الإنشقاق",
+    "translatedName": "The Sundering",
+    "versesCount": 25,
+    "includedAyahCount": 25,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Al-Buruj",
+    "arabicName": "البروج",
+    "translatedName": "The Mansions of the Stars",
+    "versesCount": 22,
+    "includedAyahCount": 22,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 86,
+    "name": "At-Tariq",
+    "arabicName": "الطارق",
+    "translatedName": "The Nightcommer",
+    "versesCount": 17,
+    "includedAyahCount": 17,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Al-A'la",
+    "arabicName": "الأعلى",
+    "translatedName": "The Most High",
+    "versesCount": 19,
+    "includedAyahCount": 19,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 88,
+    "name": "Al-Ghashiyah",
+    "arabicName": "الغاشية",
+    "translatedName": "The Overwhelming",
+    "versesCount": 26,
+    "includedAyahCount": 26,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Al-Fajr",
+    "arabicName": "الفجر",
+    "translatedName": "The Dawn",
+    "versesCount": 30,
+    "includedAyahCount": 30,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 90,
+    "name": "Al-Balad",
+    "arabicName": "البلد",
+    "translatedName": "The City",
+    "versesCount": 20,
+    "includedAyahCount": 20,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Ash-Shams",
+    "arabicName": "الشمس",
+    "translatedName": "The Sun",
+    "versesCount": 15,
+    "includedAyahCount": 15,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 92,
+    "name": "Al-Layl",
+    "arabicName": "الليل",
+    "translatedName": "The Night",
+    "versesCount": 21,
+    "includedAyahCount": 21,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 93,
+    "name": "Ad-Duhaa",
+    "arabicName": "الضحى",
+    "translatedName": "The Morning Hours",
+    "versesCount": 11,
+    "includedAyahCount": 11,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 94,
+    "name": "Ash-Sharh",
+    "arabicName": "الشرح",
+    "translatedName": "The Relief",
+    "versesCount": 8,
+    "includedAyahCount": 8,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 95,
+    "name": "At-Tin",
+    "arabicName": "التين",
+    "translatedName": "The Fig",
+    "versesCount": 8,
+    "includedAyahCount": 8,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 96,
+    "name": "Al-'Alaq",
+    "arabicName": "العلق",
+    "translatedName": "The Clot",
+    "versesCount": 19,
+    "includedAyahCount": 19,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 97,
+    "name": "Al-Qadr",
+    "arabicName": "القدر",
+    "translatedName": "The Power",
+    "versesCount": 5,
+    "includedAyahCount": 5,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Al-Bayyinah",
+    "arabicName": "البينة",
+    "translatedName": "The Clear Proof",
+    "versesCount": 8,
+    "includedAyahCount": 8,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Az-Zalzalah",
+    "arabicName": "الزلزلة",
+    "translatedName": "The Earthquake",
+    "versesCount": 8,
+    "includedAyahCount": 8,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Al-'Adiyat",
+    "arabicName": "العاديات",
+    "translatedName": "The Courser",
+    "versesCount": 11,
+    "includedAyahCount": 11,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Al-Qari'ah",
+    "arabicName": "القارعة",
+    "translatedName": "The Calamity",
+    "versesCount": 11,
+    "includedAyahCount": 11,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 102,
+    "name": "At-Takathur",
+    "arabicName": "التكاثر",
+    "translatedName": "The Rivalry in world increase",
+    "versesCount": 8,
+    "includedAyahCount": 8,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Al-'Asr",
+    "arabicName": "العصر",
+    "translatedName": "The Declining Day",
+    "versesCount": 3,
+    "includedAyahCount": 3,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 104,
+    "name": "Al-Humazah",
+    "arabicName": "الهمزة",
+    "translatedName": "The Traducer",
+    "versesCount": 9,
+    "includedAyahCount": 9,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Al-Fil",
+    "arabicName": "الفيل",
+    "translatedName": "The Elephant",
+    "versesCount": 5,
+    "includedAyahCount": 5,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 106,
+    "name": "Quraysh",
+    "arabicName": "قريش",
+    "translatedName": "Quraysh",
+    "versesCount": 4,
+    "includedAyahCount": 4,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 107,
+    "name": "Al-Ma'un",
+    "arabicName": "الماعون",
+    "translatedName": "The Small kindnesses",
+    "versesCount": 7,
+    "includedAyahCount": 7,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 108,
+    "name": "Al-Kawthar",
+    "arabicName": "الكوثر",
+    "translatedName": "The Abundance",
+    "versesCount": 3,
+    "includedAyahCount": 3,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 109,
+    "name": "Al-Kafirun",
+    "arabicName": "الكافرون",
+    "translatedName": "The Disbelievers",
+    "versesCount": 6,
+    "includedAyahCount": 6,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 110,
+    "name": "An-Nasr",
+    "arabicName": "النصر",
+    "translatedName": "The Divine Support",
+    "versesCount": 3,
+    "includedAyahCount": 3,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 111,
+    "name": "Al-Masad",
+    "arabicName": "المسد",
+    "translatedName": "The Palm Fiber",
+    "versesCount": 5,
+    "includedAyahCount": 5,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 112,
+    "name": "Al-Ikhlas",
+    "arabicName": "الإخلاص",
+    "translatedName": "The Sincerity",
+    "versesCount": 4,
+    "includedAyahCount": 4,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 113,
+    "name": "Al-Falaq",
+    "arabicName": "الفلق",
+    "translatedName": "The Daybreak",
+    "versesCount": 5,
+    "includedAyahCount": 5,
+    "juzNumbers": [
+      30
+    ]
+  },
+  {
+    "id": 114,
+    "name": "An-Nas",
+    "arabicName": "الناس",
+    "translatedName": "Mankind",
+    "versesCount": 6,
+    "includedAyahCount": 6,
+    "juzNumbers": [
+      30
+    ]
+  }
+]
