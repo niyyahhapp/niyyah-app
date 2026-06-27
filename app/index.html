@@ -1406,7 +1406,7 @@
         <p class="eyebrow">Join with a code</p>
         <input id="circle-code" class="mini-input" type="text" maxlength="6" autocapitalize="characters" placeholder="Enter 6-character code" aria-label="Circle invite code">
         <button class="secondary" data-action="join-circle-code">Join Circle</button>
-        <button class="quiet" data-action="join-sample-circle">Open Sample Circle</button>
+        <button class="quiet" data-action="join-sample-circle">Use Demo Circle</button>
         <p class="status-note">A real circle needs secure accounts and a backend. This preview stores circle data only on this device.</p>
       </div>
     </section>
@@ -1506,7 +1506,7 @@
     </div>
   </main>
 
-  <script src="../quran-data.js"></script>
+  <script src="quran-data.js"></script>
   <script>
     const ayahs = window.NIYYAH_DATA?.ayahs || window.NIYYAH_AYAHS || [];
     const surahs = window.NIYYAH_DATA?.surahs || window.NIYYAH_SURAHS || [];
@@ -2207,12 +2207,14 @@
           <div class="card">
             <p class="eyebrow">Preview account</p>
             <h2 class="title">Your NIYYAH profile stays simple</h2>
-            <p class="body" style="margin-top:12px">Use Google login to back up your progress and keep your NIYYAH profile connected across devices once auth is activated.</p>
+            <p class="body" style="margin-top:12px">In the real app, use Sign in with Apple or Google. Then choose the small profile friends will see inside circles.</p>
+            <button class="secondary" data-action="preview-apple-signin">Continue with Apple</button>
             <button class="secondary" data-action="preview-google-signin">Continue with Google</button>
             <div class="divider"></div>
             <input id="profile-name" class="mini-input" type="text" maxlength="40" placeholder="Display name" aria-label="Display name">
             <input id="profile-username" class="mini-input" type="text" maxlength="20" placeholder="Username" aria-label="Username">
             <button class="primary" data-action="create-profile">Create Preview Profile</button>
+            <button class="quiet" data-action="use-fake-profile">Show Marwah's Fake Account</button>
           </div>
         `;
         return;
