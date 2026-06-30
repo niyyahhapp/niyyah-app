@@ -4,61 +4,303 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NIYYAH Login</title>
+  <meta name="description" content="NIYYAH login page prepared for Supabase Auth.">
   <style>
-    :root { --cream:#fff8ed; --rose:#b96b75; --peach:#f6c5a8; --cocoa:#3f302c; --clay:#7a5850; --line:rgba(255,255,255,.72); --glass:rgba(255,255,255,.54); }
+    :root {
+      --cream: #fff8ed;
+      --blush: #efc3ca;
+      --peach: #f6c5a8;
+      --rose: #b96b75;
+      --olive: #737b5e;
+      --cocoa: #3f302c;
+      --clay: #7a5850;
+      --line: rgba(255,255,255,.72);
+      --glass: rgba(255,255,255,.54);
+    }
+
     * { box-sizing: border-box; }
-    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:18px; color:var(--cocoa); font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at 16% 8%, rgba(239,195,202,.42), transparent 28%), radial-gradient(circle at 88% 22%, rgba(246,197,168,.32), transparent 30%), linear-gradient(135deg,#fffaf1 0%,#ffefe7 54%,#f8ecd8 100%); }
-    .card { width:min(520px,100%); padding:26px; border-radius:34px; background:var(--glass); border:1px solid var(--line); box-shadow:0 28px 70px rgba(63,48,44,.14); backdrop-filter:blur(18px); }
-    .wordmark { display:inline-flex; align-items:center; gap:10px; font:650 23px/1 ui-serif,Georgia,serif; letter-spacing:1px; }
-    .mark { width:42px; height:42px; display:grid; place-items:center; border-radius:50%; color:var(--rose); font:800 18px/1 system-ui; background:rgba(255,255,255,.50); border:1px solid var(--line); }
-    h1 { margin:26px 0 0; font:650 clamp(36px,9vw,58px)/1 ui-serif,Georgia,serif; letter-spacing:0; }
-    p { margin:14px 0 0; color:rgba(122,88,80,.80); font-size:16px; line-height:1.6; }
-    button,a.button { width:100%; min-height:52px; display:inline-flex; align-items:center; justify-content:center; margin-top:14px; border:0; border-radius:999px; color:white; text-decoration:none; font:850 15px/1 system-ui; background:linear-gradient(135deg,#d98996,#f3b291); box-shadow:0 16px 34px rgba(185,107,117,.22); cursor:pointer; }
-    .secondary { color:var(--cocoa); background:rgba(255,255,255,.62); border:1px solid rgba(255,255,255,.78); box-shadow:0 12px 28px rgba(63,48,44,.08); }
-    .status { margin-top:18px; padding:14px; border-radius:20px; color:rgba(122,88,80,.86); background:rgba(255,255,255,.50); border:1px solid rgba(255,255,255,.76); font-size:14px; line-height:1.5; white-space:pre-line; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      color: var(--cocoa);
+      font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 16% 8%, rgba(239,195,202,.42), transparent 28%),
+        radial-gradient(circle at 88% 22%, rgba(246,197,168,.32), transparent 30%),
+        linear-gradient(135deg, #fffaf1 0%, #ffefe7 54%, #f8ecd8 100%);
+    }
+
+    .card {
+      width: min(520px, 100%);
+      padding: 26px;
+      border-radius: 34px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: 0 28px 70px rgba(63,48,44,.14);
+      backdrop-filter: blur(18px);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font: 650 23px/1 ui-serif, Georgia, serif;
+      letter-spacing: 1px;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--rose);
+      font: 800 18px/1 ui-rounded, system-ui, sans-serif;
+      background: rgba(255,255,255,.50);
+      border: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 26px 0 0;
+      font: 650 clamp(36px, 9vw, 58px)/1 ui-serif, Georgia, serif;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 14px 0 0;
+      color: rgba(122,88,80,.80);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    button,
+    a.button {
+      width: 100%;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+      font: 850 15px/1 ui-rounded, system-ui, sans-serif;
+      background: linear-gradient(135deg, #d98996, #f3b291);
+      box-shadow: 0 16px 34px rgba(185,107,117,.22);
+      cursor: pointer;
+    }
+
+    .secondary {
+      color: var(--cocoa);
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,255,255,.78);
+      box-shadow: 0 12px 28px rgba(63,48,44,.08);
+    }
+
+    .apple {
+      color: var(--cocoa);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow: 0 12px 28px rgba(63,48,44,.08);
+    }
+
+    .status {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 20px;
+      color: rgba(122,88,80,.86);
+      background: rgba(255,255,255,.50);
+      border: 1px solid rgba(255,255,255,.76);
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .profile {
+      display: none;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.50);
+      border: 1px solid rgba(255,255,255,.76);
+    }
+
+    .profile.show {
+      display: flex;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--rose);
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    strong, span { display: block; }
+    span { color: rgba(122,88,80,.74); font-size: 14px; margin-top: 2px; }
   </style>
 </head>
 <body>
   <main class="card">
     <div class="wordmark"><span class="mark">N</span>NIYYAH</div>
     <h1>Save your Qur'an learning.</h1>
-    <p>Use Google login to back up progress, join study circles, and keep your NIYYAH profile connected across devices.</p>
+    <p>Sign in to back up progress, join study circles, and keep your NIYYAH profile connected across devices.</p>
+
     <button id="google-login" type="button">Continue with Google</button>
-    <a class="button secondary" href="../">Open App Preview</a>
+    <button id="apple-login" class="apple" type="button">Continue with Apple</button>
+    <a class="button secondary" href="../app/">Open App Preview</a>
+    <a class="button secondary" href="../">Back to Hub</a>
+
+    <div class="profile" id="profile">
+      <div class="avatar" id="avatar">N</div>
+      <div>
+        <strong id="profile-name">Signed in</strong>
+        <span id="profile-email">NIYYAH account ready</span>
+      </div>
+    </div>
+
     <div class="status" id="status">Checking auth setup...</div>
   </main>
+
   <script src="auth-config.js"></script>
   <script type="module">
-    const status = document.getElementById('status');
-    const googleButton = document.getElementById('google-login');
+    const status = document.getElementById("status");
+    const profile = document.getElementById("profile");
+    const profileName = document.getElementById("profile-name");
+    const profileEmail = document.getElementById("profile-email");
+    const avatar = document.getElementById("avatar");
+    const googleButton = document.getElementById("google-login");
+    const appleButton = document.getElementById("apple-login");
+
     const config = window.NIYYAH_AUTH_CONFIG || {};
-    const configured = /^https:\/\/.+\.supabase\.co$/.test(config.supabaseUrl || '') && !String(config.supabaseAnonKey || '').includes('PASTE');
-    function nextURL() { return new URLSearchParams(location.search).get('next') || '../'; }
-    function usernameFromEmail(email) { return String(email || 'niyyahuser').split('@')[0].toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 20) || 'niyyahuser'; }
-    function saveUser(user) {
-      const name = user.user_metadata?.full_name || user.email || 'NIYYAH User';
-      const email = user.email || '';
-      const username = usernameFromEmail(email || name);
-      localStorage.setItem('niyyah-auth-user', JSON.stringify({ name, email, username, provider:'google' }));
-      localStorage.setItem('niyyah-profile', JSON.stringify({ displayName:name, username, provider:'google', email }));
+    const configured = /^https:\/\/.+\.supabase\.co$/.test(config.supabaseUrl || "") && !String(config.supabaseAnonKey || "").includes("PASTE");
+
+    function nextURL() {
+      const params = new URLSearchParams(location.search);
+      return params.get("next") || "../app/";
     }
-    if (!configured) {
-      googleButton.textContent = 'Google Login Not Connected Yet';
-      googleButton.setAttribute('aria-disabled', 'true');
-      status.textContent = 'Google login is not activated yet. Add the Supabase project URL and publishable anon key in auth/auth-config.js, then enable Google provider in Supabase.';
-      googleButton.addEventListener('click', () => { status.textContent = 'Still not connected. Add Supabase + Google OAuth first.'; });
-    } else {
-      const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-      const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
-      const { data } = await supabase.auth.getSession();
-      if (data.session?.user) { saveUser(data.session.user); location.href = nextURL(); }
-      status.textContent = 'Google login is configured. Continue with Google to create or restore your NIYYAH account.';
-      googleButton.addEventListener('click', async () => {
-        status.textContent = 'Opening Google login...';
-        const redirectTo = new URL(location.pathname, location.origin).href + '?next=' + encodeURIComponent(nextURL());
-        const { error } = await supabase.auth.signInWithOAuth({ provider:'google', options:{ redirectTo } });
-        if (error) status.textContent = 'Google login could not start: ' + error.message;
+
+    function requestedProvider() {
+      const params = new URLSearchParams(location.search);
+      const value = params.get("provider");
+      return value === "apple" || value === "google" ? value : "";
+    }
+
+    function usernameFromEmail(email) {
+      return String(email || "niyyahuser").split("@")[0].toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 20) || "niyyahuser";
+    }
+
+    function providerFromUser(user) {
+      return user?.app_metadata?.provider || user?.identities?.[0]?.provider || "email";
+    }
+
+    function saveUser(user) {
+      const data = {
+        name: user.name || user.user_metadata?.full_name || user.email || "NIYYAH User",
+        email: user.email || "",
+        picture: user.picture || user.user_metadata?.avatar_url || "",
+        username: usernameFromEmail(user.email || user.name),
+        provider: providerFromUser(user)
+      };
+      localStorage.setItem("niyyah-auth-user", JSON.stringify(data));
+      localStorage.setItem("niyyah-profile", JSON.stringify({
+        displayName: data.name,
+        username: data.username,
+        provider: data.provider,
+        email: data.email
+      }));
+      profileName.textContent = data.name;
+      profileEmail.textContent = data.email || "@"+data.username;
+      avatar.textContent = "";
+      if (data.picture) {
+        const avatarImage = document.createElement("img");
+        avatarImage.src = data.picture;
+        avatarImage.alt = "";
+        avatar.appendChild(avatarImage);
+      } else {
+        avatar.textContent = data.name.slice(0, 1).toUpperCase();
+      }
+      profile.classList.add("show");
+    }
+
+      if (!configured) {
+      status.textContent = "Login is not activated yet. Add the Supabase URL and publishable anon key in auth/auth-config.js, then enable Google and Apple providers in Supabase Auth.";
+      googleButton.textContent = "Google Login Not Connected Yet";
+      appleButton.textContent = "Apple Login Not Connected Yet";
+      googleButton.setAttribute("aria-disabled", "true");
+      appleButton.setAttribute("aria-disabled", "true");
+      googleButton.addEventListener("click", () => {
+        status.textContent = "Still not connected. Add Supabase config and enable Google provider first.";
       });
+      appleButton.addEventListener("click", () => {
+        status.textContent = "Still not connected. Apple Sign In also requires Apple Developer setup and Apple provider enabled in Supabase.";
+      });
+    } else {
+      const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+      const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
+
+      async function syncProfile(user) {
+        const profileRow = {
+          id: user.id,
+          display_name: user.user_metadata?.full_name || user.email || "NIYYAH User",
+          username: usernameFromEmail(user.email || user.id),
+          email: user.email || null,
+          avatar_url: user.user_metadata?.avatar_url || null,
+          provider: providerFromUser(user),
+          updated_at: new Date().toISOString()
+        };
+        const { error } = await supabase.from("profiles").upsert(profileRow, { onConflict: "id" });
+        if (error) {
+          status.textContent = "Signed in locally, but profile backup is not ready yet: " + error.message + "\nRun the Supabase setup SQL, then try again.";
+          return false;
+        }
+        return true;
+      }
+
+      const { data } = await supabase.auth.getSession();
+      if (data.session?.user) {
+        saveUser(data.session.user);
+        const backedUp = await syncProfile(data.session.user);
+        status.textContent = backedUp ? "Signed in. Profile backup is ready. Opening the app preview soon..." : status.textContent;
+        if (backedUp) window.setTimeout(() => location.href = nextURL(), 900);
+      } else {
+        status.textContent = "Login is configured. Continue with Google, or use Apple after the Apple provider is enabled in Supabase.";
+      }
+
+      async function startOAuth(provider) {
+        status.textContent = `Opening ${provider === "apple" ? "Apple" : "Google"} login...`;
+        const redirectTo = new URL(location.pathname, location.origin).href + "?next=" + encodeURIComponent(nextURL());
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider,
+          options: { redirectTo }
+        });
+        if (error) status.textContent = `${provider === "apple" ? "Apple" : "Google"} login could not start: ${error.message}`;
+      }
+
+      googleButton.addEventListener("click", () => startOAuth("google"));
+      appleButton.addEventListener("click", () => startOAuth("apple"));
+
+      const provider = requestedProvider();
+      if (provider) startOAuth(provider);
     }
   </script>
 </body>
