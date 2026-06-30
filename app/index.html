@@ -2611,8 +2611,9 @@
           <div class="card">
             <p class="eyebrow">Account setup</p>
             <h2 class="title">Your NIYYAH profile stays simple</h2>
-            <p class="body" style="margin-top:12px">Use Google login to back up your progress and keep your NIYYAH profile connected across devices once auth is activated.</p>
+            <p class="body" style="margin-top:12px">Use Google or Apple login to back up your progress and keep your NIYYAH profile connected across devices once auth is activated.</p>
             <button class="secondary" data-action="continue-google-signin">Continue with Google</button>
+            <button class="secondary" data-action="continue-apple-signin">Continue with Apple</button>
             <div class="divider"></div>
             <input id="profile-name" class="mini-input" type="text" maxlength="40" placeholder="Display name" aria-label="Display name">
             <input id="profile-username" class="mini-input" type="text" maxlength="20" placeholder="Username" aria-label="Username">
@@ -2679,10 +2680,10 @@
       document.querySelectorAll("[data-current-surah]").forEach(el => el.textContent = ayah.surahName);
       document.querySelectorAll("[data-current-translation]").forEach(el => el.innerHTML = explainableText(readingAyah.translation));
       document.querySelectorAll("[data-current-translation-source]").forEach(el => el.textContent = readingAyah.translationSource || "");
-      setReviewedField("[data-surah-main-theme]", ayah.surahMainTheme || fallbackSurahField("theme", ayah));
+      setReviewedField("[data-surah-main-theme]", ayah.surahMainTheme);
       setReviewedField("[data-surah-historical-context]", ayah.surahHistoricalContext);
       setReviewedField("[data-surah-revelation-reason]", ayah.surahRevelationReason);
-      setReviewedField("[data-surah-key-lessons]", ayah.surahKeyLessons || fallbackSurahField("lessons", ayah));
+      setReviewedField("[data-surah-key-lessons]", ayah.surahKeyLessons);
       document.querySelectorAll("[data-surah-tafsir-source]").forEach(el => {
         el.textContent = ayah.surahTafsirSource ? `Source: ${ayah.surahTafsirSource}` : "";
       });
@@ -2714,8 +2715,8 @@
           el.textContent = "";
         }
       });
-      setReviewedField("[data-ayah-practical-lesson]", ayah.ayahPracticalLesson || fallbackPracticalLesson(ayah));
-      setReviewedField("[data-ayah-connection]", ayah.ayahConnection || fallbackAyahConnection(ayah));
+      setReviewedField("[data-ayah-practical-lesson]", ayah.ayahPracticalLesson);
+      setReviewedField("[data-ayah-connection]", ayah.ayahConnection);
       document.querySelectorAll("[data-current-tafsir]").forEach(el => {
         el.textContent = readingAyah.tafsirSummary;
         el.hidden = !state.tafsirExpanded;
@@ -2833,23 +2834,6 @@
     function reviewedText(value, fallback) {
       const text = cleanText(value);
       return text ? explainableText(text) : escapeHTML(fallback);
-    }
-
-    function fallbackSurahField(kind, ayah) {
-      if (kind === "theme") return `This surah is being prepared for a concise beginner overview. For now, read ${ayah.surahName} through its translation and source tafsir.`;
-      return "Read slowly, understand the translation, and write one reflection you can carry into daily life.";
-    }
-
-    function fallbackPracticalLesson(ayah) {
-      const lesson = cleanText(ayah.surahKeyLessons);
-      if (lesson) return `Use this ayah to practice the surah's wider lesson: ${lesson}`;
-      return "Read the translation slowly, then choose one small action that brings this ayah into your day.";
-    }
-
-    function fallbackAyahConnection(ayah) {
-      const theme = cleanText(ayah.surahMainTheme);
-      if (theme) return `This ayah belongs to the surah's wider theme: ${theme}`;
-      return "Read this ayah with the translation, surah overview, and source tafsir for fuller context.";
     }
 
     function setReviewedField(selector, value) {
@@ -3571,8 +3555,9 @@
 
     function ayahReminderText() {
       const ayah = currentAyah();
-      const lesson = cleanText(ayah.ayahPracticalLesson || fallbackPracticalLesson(ayah));
-      return `${ayah.reference}\n\n${cleanText(ayah.translation)}\n\n${lesson}\n\nThis ayah reminded me of you.\n\nNIYYAH — Understand the Qur'an one ayah at a time.`;
+      const lesson = cleanText(ayah.ayahPracticalLesson);
+      const lessonBlock = lesson ? `\n\n${lesson}` : "";
+      return `${ayah.reference}\n\n${cleanText(ayah.translation)}${lessonBlock}\n\nThis ayah reminded me of you.\n\nNIYYAH — Understand the Qur'an one ayah at a time.`;
     }
 
     async function shareAyahReminder() {
@@ -3902,7 +3887,7 @@
       if (button.dataset.action === "open-circle-ayah") openCircleAyah();
       if (button.dataset.action === "create-profile") createProfile(false);
       if (button.dataset.action === "continue-apple-signin") {
-        showToast("Apple sign-in will connect through Supabase Auth");
+        window.location.href = "../auth/?provider=apple&next=../app/";
       }
       if (button.dataset.action === "continue-google-signin") {
         window.location.href = "../auth/?next=../app/";
