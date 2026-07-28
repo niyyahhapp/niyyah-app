@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIYYAH Pre-launch Smoke Test</title>
+  <style>
+    body { margin: 0; color: #3f302c; font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(135deg, #fffaf1, #ffefe7 56%, #f8ecd8); }
+    main { width: min(900px, 100%); margin: 0 auto; padding: 34px 20px 56px; }
+    a { color: #b96b75; font-weight: 800; }
+    .card { padding: 28px; border-radius: 28px; background: rgba(255,255,255,.58); border: 1px solid rgba(255,255,255,.74); box-shadow: 0 24px 60px rgba(122,88,80,.10); }
+    h1 { font: 700 clamp(34px, 9vw, 58px)/1 ui-serif, Georgia, serif; margin: 0 0 14px; }
+    h2 { margin: 30px 0 10px; font: 700 23px/1.15 ui-serif, Georgia, serif; }
+    p, li { color: rgba(122,88,80,.88); line-height: 1.68; font-size: 16px; }
+    .note { color: #737b5e; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="index.html">Back to NIYYAH</a></p>
+    <section class="card">
+      <h1>Pre-launch Smoke Test</h1>
+      <p class="note">Last updated: July 28, 2026</p>
+      <h2>Passed</h2>
+      <ul>
+        <li>Public app package loads on GitHub Pages.</li>
+        <li>Home, Continue, Ayah, Understand, Reflect, Journal, and Progress opened in browser smoke testing.</li>
+        <li>No visible undefined, NaN, data-load error, payment text, or “coming soon” appeared in tested visible flows.</li>
+        <li>Surah An-Nas 114:1 and Al-Falaq 113:1 showed Arabic with بِرَبِّ and no visible rabba regression.</li>
+        <li>Privacy, Terms, and Account Deletion pages are included.</li>
+        <li>Supabase RLS is enabled on the NIYYAH profile, circle, activity, invite, check-in, and account deletion tables.</li>
+        <li>Anonymous table grants were removed.</li>
+        <li>Circle invite and account deletion functions are executable by authenticated/admin roles, not anon.</li>
+        <li>Anonymous API probes returned 401 for private tables/RPC endpoints.</li>
+      </ul>
+      <h2>Still Required</h2>
+      <ul>
+        <li>Complete Google OAuth sign-in with a real account.</li>
+        <li>Complete Apple Sign In after Apple Developer provider setup.</li>
+        <li>Test two real accounts for cross-account isolation.</li>
+        <li>Connect native account deletion to the backend deletion request RPC.</li>
+        <li>Build and run the real SwiftUI app in Xcode or the iOS build plugin.</li>
+        <li>Submit a TestFlight build and test on a real device.</li>
+      </ul>
+      <h2>High-risk Notes</h2>
+      <ul>
+        <li>Qur'anic Arabic must continue to come from verified immutable data fields.</li>
+        <li>Translation, tafsir/source notes, beginner explanations, and user reflections must remain clearly separated.</li>
+        <li>Future AI must not generate tafsir, fatwas, religious rulings, or Qur'anic Arabic.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
