@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NIYYAH App</title>
   <style>
+    @font-face {
+      font-family: "NIYYAH Quran";
+      src: url("./assets/fonts/AmiriQuran-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --rose: #bd6a76;
       --rose-soft: #efb3bb;
@@ -14,6 +22,7 @@
       --olive: #717b5b;
       --glass: rgba(255, 255, 255, .52);
       --line: rgba(255, 255, 255, .70);
+      --arabic-font: "NIYYAH Quran", "Amiri Quran", "KFGQPC Uthman Taha Naskh", "Geeza Pro", "Noto Naskh Arabic", "Noto Sans Arabic", serif;
     }
 
     * { box-sizing: border-box; }
@@ -98,15 +107,25 @@
     .ayah {
       direction: rtl;
       text-align: center;
-      font-family: "Geeza Pro", "Traditional Arabic", ui-serif, Georgia, serif;
-      font-size: clamp(39px, 11vw, 52px);
-      line-height: 1.78;
+      font-family: var(--arabic-font);
+      font-size: clamp(44px, 12vw, 58px);
+      line-height: 2.35;
       font-weight: 400;
+      letter-spacing: 0 !important;
+      word-spacing: normal;
+      unicode-bidi: isolate;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      font-kerning: normal;
+      font-synthesis: none;
+      font-variant-ligatures: normal;
+      font-feature-settings: "mark" 1, "mkmk" 1;
+      isolation: isolate;
     }
 
     .home-ayah {
-      font-size: clamp(31px, 8vw, 38px);
-      line-height: 1.72;
+      font-size: clamp(33px, 8.5vw, 40px);
+      line-height: 2.15;
     }
 
     .translation {
@@ -116,6 +135,19 @@
       font-family: ui-serif, Georgia, serif;
       font-size: 21px;
       line-height: 1.55;
+    }
+
+    .transliteration {
+      margin-top: 18px;
+      text-align: center;
+      color: rgba(62, 48, 45, .68);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .audio-button[hidden], .audio-source[hidden] {
+      display: none;
     }
 
     .reference {
@@ -205,6 +237,16 @@
       padding: 12px 20px;
       color: rgba(117, 81, 76, .82);
       background: rgba(255, 255, 255, .38);
+    }
+
+    .danger {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px 18px;
+      color: #8d3f3f;
+      background: rgba(255, 244, 241, .74);
+      border: 1px solid rgba(141, 63, 63, .22);
+      box-shadow: 0 12px 28px rgba(141, 63, 63, .08);
     }
 
     .body {
@@ -321,6 +363,15 @@
       font-family: ui-serif, Georgia, serif;
       font-size: 18px;
       margin-bottom: 5px;
+    }
+
+    .surah-button strong span[lang="ar"],
+    [lang="ar"],
+    [dir="rtl"] {
+      font-family: var(--arabic-font);
+      letter-spacing: 0 !important;
+      unicode-bidi: plaintext;
+      font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "mark" 1, "mkmk" 1;
     }
 
     .surah-button span {
@@ -554,6 +605,118 @@
     .circle-activity textarea {
       min-height: 104px;
       resize: vertical;
+    }
+
+    .circle-mode-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mode-card {
+      width: 100%;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .66);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .42);
+      box-shadow: 0 16px 38px rgba(117, 81, 76, .07);
+      color: inherit;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .mode-card.active {
+      border-color: rgba(189, 104, 119, .42);
+      background: linear-gradient(145deg, rgba(255,255,255,.66), rgba(249,220,213,.42));
+      box-shadow: 0 20px 44px rgba(189, 104, 119, .12);
+    }
+
+    .mode-card strong {
+      display: block;
+      font-family: ui-serif, Georgia, serif;
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .circle-step {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.54), rgba(249,220,213,.22));
+      border: 1px solid rgba(255,255,255,.68);
+    }
+
+    .circle-step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      color: white;
+      background: linear-gradient(135deg, #d98896, #f1ad9d);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .circle-home-hero {
+      margin-top: 18px;
+      padding: 22px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255,255,255,.64), rgba(244,232,218,.42));
+      border: 1px solid rgba(255,255,255,.78);
+      box-shadow: 0 22px 50px rgba(117, 81, 76, .10);
+    }
+
+    .member-status-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .member-status-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(255,255,255,.64);
+    }
+
+    .stage-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 7px;
+    }
+
+    .stage-dot {
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 760;
+      color: rgba(117, 81, 76, .60);
+      background: rgba(255,255,255,.46);
+      border: 1px solid rgba(255,255,255,.62);
+    }
+
+    .stage-dot.done {
+      color: white;
+      background: linear-gradient(135deg, #d98a98, #efad9e);
+      border-color: transparent;
+    }
+
+    .celebration-note {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 22px;
+      color: var(--olive);
+      background: rgba(113, 123, 91, .12);
+      border: 1px solid rgba(113, 123, 91, .18);
+      font-weight: 780;
     }
 
     .info-stack {
@@ -1058,6 +1221,7 @@
     }
 
     .onboarding-stage {
+      position: relative;
       min-height: calc(100vh - 130px);
       display: flex;
       flex-direction: column;
@@ -1083,7 +1247,10 @@
     .onboarding-arabic {
       direction: rtl;
       color: rgba(189, 106, 118, .84);
-      font: 400 74px/1.28 "Geeza Pro", "Traditional Arabic", ui-serif, Georgia, serif;
+      font: 400 74px/1.72 var(--arabic-font);
+      letter-spacing: 0 !important;
+      unicode-bidi: plaintext;
+      font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "mark" 1, "mkmk" 1;
       text-shadow: 0 14px 28px rgba(255, 255, 255, .72);
       margin-bottom: 26px;
     }
@@ -1091,7 +1258,10 @@
     .onboarding-dua {
       direction: rtl;
       color: var(--olive);
-      font: 400 35px/1.55 "Geeza Pro", "Traditional Arabic", ui-serif, Georgia, serif;
+      font: 400 35px/1.85 var(--arabic-font);
+      letter-spacing: 0 !important;
+      unicode-bidi: plaintext;
+      font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "mark" 1, "mkmk" 1;
       margin-top: 36px;
     }
 
@@ -1132,6 +1302,107 @@
       font-weight: 850;
     }
 
+    .onboarding-values,
+    .onboarding-circle-tabs {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .onboarding-value,
+    .onboarding-circle-tab {
+      min-width: 0;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 999px;
+      color: rgba(62, 48, 45, .78);
+      background: rgba(255, 255, 255, .52);
+      font: 750 12px/1.1 ui-rounded, system-ui, sans-serif;
+    }
+
+    .onboarding-choice {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      text-align: left;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .72);
+      color: var(--ink);
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .onboarding-choice.selected {
+      background: rgba(255, 255, 255, .74);
+      border-color: rgba(189, 106, 118, .30);
+      box-shadow: 0 16px 34px rgba(189, 106, 118, .10);
+    }
+
+    .onboarding-choice-mark {
+      color: var(--olive);
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .onboarding-path {
+      width: 100%;
+      display: grid;
+      gap: 0;
+      margin-top: 26px;
+      text-align: left;
+    }
+
+    .onboarding-path-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .onboarding-path-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--ink);
+      background: rgba(239, 167, 177, .48);
+      font: 800 12px/1 ui-rounded, system-ui, sans-serif;
+    }
+
+    .onboarding-path-line {
+      width: 2px;
+      height: 17px;
+      margin-left: 20px;
+      background: rgba(189, 106, 118, .22);
+    }
+
+    .onboarding-circle-tab.selected {
+      color: #fff;
+      background: var(--rose);
+    }
+
+    .onboarding-circle-preview {
+      width: 100%;
+      margin-top: 14px;
+      padding: 22px;
+      border-radius: 24px;
+      text-align: left;
+      background: rgba(255, 255, 255, .56);
+      border: 1px solid rgba(255, 255, 255, .76);
+      box-shadow: 0 18px 40px rgba(189, 106, 118, .08);
+    }
+
+    .onboarding-circle-presence {
+      font: 650 24px/1.18 ui-serif, Georgia, serif;
+      color: var(--ink);
+      margin: 18px 0 10px;
+    }
+
     .onboarding-dots {
       display: flex;
       justify-content: center;
@@ -1152,6 +1423,16 @@
       background: rgba(189, 106, 118, .76);
     }
 
+    .onboarding-skip {
+      position: absolute;
+      z-index: 2;
+      top: 4px;
+      right: 0;
+      width: auto;
+      margin: 0;
+      padding: 10px 12px;
+    }
+
     @keyframes entryMotion {
       from { opacity: 0; transform: translateY(18px) scale(.985); filter: blur(3px); }
       to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
@@ -1163,7 +1444,7 @@
     <section id="entry-choice" class="screen active">
       <div class="onboarding-stage">
         <div class="onboarding-content">
-          <div class="entry-logo">ن</div>
+          <div class="entry-logo">N</div>
           <p class="eyebrow">NIYYAH</p>
           <h1 class="title">Preparing your reflection space</h1>
           <p class="subtitle" style="text-align:center;max-width:330px">A calm space to read, understand, and reflect.</p>
@@ -1173,6 +1454,7 @@
 
     <section id="onboarding-flow" class="screen">
       <div class="onboarding-stage">
+        <button class="quiet onboarding-skip" data-action="entry-skip">Skip</button>
         <div id="onboarding-content" class="onboarding-content"></div>
         <div id="onboarding-dots" class="onboarding-dots"></div>
         <button class="secondary" data-action="entry-prev">Previous</button>
@@ -1194,7 +1476,7 @@
       <p class="subtitle">Begin with intention. Stay with one ayah.</p>
       <button class="quiet" data-action="open-profile" data-profile-home-button>View profile</button>
 
-      <div class="card">
+      <div class="card" data-circle-setup-card>
         <p class="reference" data-current-reference></p>
         <div class="ayah home-ayah" data-current-arabic></div>
         <div class="divider"></div>
@@ -1252,7 +1534,7 @@
       <div class="card">
         <p class="eyebrow">Choose a surah</p>
         <h2 class="title">Reflection library</h2>
-        <p class="source">Al-Fatihah plus Juz 28, 29, and 30. Choose a surah and NIYYAH will begin at the first included ayah.</p>
+        <p class="source">All 114 surahs are included. Choose a surah and NIYYAH will begin at its first ayah.</p>
         <input id="surah-search" class="search" type="search" placeholder="Search surah, juz, or meaning">
         <div id="surah-list" class="surah-list"></div>
       </div>
@@ -1268,6 +1550,15 @@
       <div class="card">
         <div class="ayah" data-current-arabic></div>
         <p class="translation" data-current-translation></p>
+        <p class="transliteration" data-current-transliteration hidden></p>
+        <div class="audio-controls" data-audio-controls hidden>
+          <button class="secondary audio-button" data-action="play-recitation">Play</button>
+          <button class="secondary audio-button" data-action="pause-recitation">Pause</button>
+          <button class="secondary audio-button" data-action="restart-recitation">Restart</button>
+          <button class="secondary audio-button" data-action="previous-audio-ayah">Previous</button>
+          <button class="secondary audio-button" data-action="next-audio-ayah">Next</button>
+        </div>
+        <p class="source audio-source" data-current-audio-source hidden></p>
         <p class="source" data-current-translation-source style="text-align:center;margin-top:12px"></p>
         <p class="source" data-surah-progress style="text-align:center;margin-top:18px"></p>
       </div>
@@ -1283,7 +1574,7 @@
             <p class="body" data-ayah-surah-context></p>
           </div>
           <div class="info-block">
-            <strong>Why It Was Revealed</strong>
+            <strong>Surah Purpose</strong>
             <p class="body" data-ayah-revelation-reason></p>
           </div>
           <div class="info-block">
@@ -1292,7 +1583,7 @@
           </div>
           <p class="source" data-beginner-content-status></p>
           <div class="info-block">
-            <strong>What This Teaches Us</strong>
+            <strong>Reflection Lesson</strong>
             <p class="body" data-ayah-practical-lesson></p>
           </div>
           <div class="info-block">
@@ -1316,8 +1607,8 @@
       <div class="card">
         <p class="eyebrow">Begin with intention</p>
         <h2 class="title">Bismillah</h2>
-        <p class="translation" style="margin-top:22px">رَبِّ زِدْنِي عِلْمًا</p>
-        <p class="body" style="margin-top:18px">My Lord, increase me in knowledge.</p>
+        <p class="translation" style="margin-top:22px">Your next ayah is waiting.</p>
+        <p class="body" style="margin-top:18px">Start with one sincere step. Read, listen, reflect, or return to your circle.</p>
         <p class="source" data-surah-progress></p>
       </div>
       <div class="card">
@@ -1333,7 +1624,7 @@
             <p class="body" data-surah-historical-context></p>
           </div>
           <div class="info-block">
-            <strong>Why It Was Revealed</strong>
+            <strong>Surah Purpose</strong>
             <p class="body" data-surah-revelation-reason></p>
           </div>
           <div class="info-block">
@@ -1418,7 +1709,7 @@
         <h2 class="title" data-understood-title></h2>
         <div class="info-stack">
           <div class="info-block"><strong>✓ Main Theme</strong><p class="body" data-surah-main-theme></p></div>
-          <div class="info-block"><strong>✓ Why It Was Revealed</strong><p class="body" data-surah-revelation-reason></p></div>
+          <div class="info-block"><strong>✓ Surah Purpose</strong><p class="body" data-surah-revelation-reason></p></div>
           <div class="info-block"><strong>✓ Key Lesson</strong><p class="body" data-surah-key-lessons></p></div>
           <div class="info-block"><strong>✓ Most Important Takeaway</strong><p class="body" data-understood-takeaway></p></div>
           <div class="info-block"><strong>✓ Quiz Score</strong><p class="body" data-quiz-score></p></div>
@@ -1504,25 +1795,41 @@
       <div id="circle-account-prompt"></div>
       <div id="circle-dashboard"></div>
       <div class="card">
-        <p class="eyebrow">Create a circle</p>
+        <p class="eyebrow">Start together</p>
+        <h3 class="title" style="font-size:22px">Your Qur'an journey, together.</h3>
+        <div class="circle-step">
+          <span class="circle-step-number">1</span>
+          <p class="eyebrow">Choose how you want to learn together</p>
+          <p class="source">Tap a format to automatically prepare the circle setup below.</p>
+          <div id="circle-format-list" class="circle-mode-grid"></div>
+        </div>
+        <div class="circle-step">
+          <span class="circle-step-number">2</span>
+          <p class="eyebrow">Choose an action</p>
+          <div class="chip-row">
+            <button class="chip active" data-circle-flow-action="start">Start a circle</button>
+            <button class="chip" data-circle-flow-action="join">Join with a code</button>
+          </div>
+        </div>
+        <div class="circle-step" data-circle-start-panel>
+          <span class="circle-step-number">3</span>
+          <p class="eyebrow">Choose a journey</p>
+          <div id="circle-journey-list" class="circle-mode-grid"></div>
+          <div class="divider"></div>
+          <span class="circle-step-number">4</span>
+          <p class="eyebrow">Create a clear invitation</p>
+          <p class="body">Invite the person who keeps you motivated. One ayah. One shared journey.</p>
+        </div>
         <input id="circle-name" class="mini-input" type="text" maxlength="40" placeholder="Circle name" aria-label="Circle name">
         <input id="circle-description" class="mini-input" type="text" maxlength="120" placeholder="A short purpose for your circle" aria-label="Circle description">
         <select id="circle-template" class="soft-select" aria-label="Circle challenge template"></select>
         <select id="circle-surah" class="soft-select" aria-label="Circle surah"></select>
-        <button class="primary" data-action="create-circle">Start Circle</button>
-        <div class="divider"></div>
-        <p class="eyebrow">Join with a code</p>
-        <input id="circle-code" class="mini-input" type="text" maxlength="6" autocapitalize="characters" placeholder="Enter 6-character code" aria-label="Circle invite code">
-        <button class="secondary" data-action="join-circle-code">Join Circle</button>
-        <p class="status-note">Local preview: circle data, invite codes, and statuses are saved on this device. Real cross-device circles need Supabase Auth and a backend table.</p>
-      </div>
-      <div class="card">
-        <p class="eyebrow">Circle formats</p>
-        <h3 class="title" style="font-size:22px">Built for friends, MSAs, and creators</h3>
-        <div class="info-stack">
-          <div class="info-block"><strong>Best Friend Mode</strong><p class="body">A two-person circle with one shared ayah, one shared streak, one reminder, and one private Dua Pulse.</p></div>
-          <div class="info-block"><strong>Campus / MSA Mode</strong><p class="body">Choose a surah, set a group challenge, share a QR invite, and track group completion without individual rankings.</p></div>
-          <div class="info-block"><strong>Creator Circles</strong><p class="body">Host a 7-Day Qur'an Reset with a creator intro message, challenge page, and invite link.</p></div>
+        <button class="primary" data-action="create-circle" data-circle-start-control>Start Circle</button>
+        <div data-circle-join-panel>
+          <div class="divider"></div>
+          <p class="eyebrow">Join with a code</p>
+          <input id="circle-code" class="mini-input" type="text" maxlength="6" autocapitalize="characters" placeholder="Enter 6-character code" aria-label="Circle invite code">
+          <button class="secondary" data-action="join-circle-code">Join Circle</button>
         </div>
       </div>
     </section>
@@ -1626,6 +1933,15 @@
   <script>
     const ayahs = window.NIYYAH_DATA?.ayahs || window.NIYYAH_AYAHS || [];
     const surahs = window.NIYYAH_DATA?.surahs || window.NIYYAH_SURAHS || [];
+    const audioState = {
+      element: null,
+      currentlyPlayingSurah: null,
+      currentlyPlayingAyah: null,
+      currentlyPlayingAudioURL: "",
+      isPlaying: false,
+      playbackProgress: 0,
+      continuousPlayback: false
+    };
 
     function storedJSON(key, fallback) {
       try {
@@ -1664,6 +1980,95 @@
       }
     }
 
+    const niyyahStorageKeys = [
+      "niyyah-current-index",
+      "niyyah-completed",
+      "niyyah-reflections",
+      "niyyah-reflection-dates",
+      "niyyah-favorites",
+      "niyyah-vocabulary",
+      "niyyah-memorization",
+      "niyyah-understanding-viewed",
+      "niyyah-finished-surahs",
+      "niyyah-challenge-progress",
+      "niyyah-active-challenge",
+      "niyyah-active-journey",
+      "niyyah-profile",
+      "niyyah-auth-user",
+      "niyyah-auth-session",
+      "niyyah-circle",
+      "niyyah-circle-daily-statuses",
+      "niyyah-dua-pulse-status",
+      "niyyah-community-reflections",
+      "niyyah-circle-activity",
+      "niyyah-last-discussion",
+      "niyyah-reflection-mode",
+      "niyyah-reflection-mood",
+      "niyyah-circle-format",
+      "niyyah-circle-flow-action",
+      "niyyah-has-entered"
+    ];
+
+    function decodeBase64URLJSON(value) {
+      try {
+        const base64 = String(value || "").replace(/-/g, "+").replace(/_/g, "/");
+        const padded = base64 + "=".repeat((4 - base64.length % 4) % 4);
+        return JSON.parse(decodeURIComponent(escape(atob(padded))));
+      } catch {
+        return null;
+      }
+    }
+
+    function usernameFromEmail(email) {
+      return String(email || "niyyahuser").split("@")[0].toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 20) || "niyyahuser";
+    }
+
+    function consumeOAuthReturn() {
+      const hashParams = new URLSearchParams((window.location.hash || "").replace(/^#/, ""));
+      const queryParams = new URLSearchParams(window.location.search || "");
+      const accessToken = hashParams.get("access_token") || queryParams.get("access_token");
+      if (!accessToken) return;
+
+      const payload = decodeBase64URLJSON(accessToken.split(".")[1]);
+      if (!payload?.sub) return;
+
+      const refreshToken = hashParams.get("refresh_token") || queryParams.get("refresh_token") || "";
+      const expiresIn = Number(hashParams.get("expires_in") || queryParams.get("expires_in") || 0);
+      const email = payload.email || "";
+      const name = payload.user_metadata?.full_name || payload.name || email || "NIYYAH User";
+      const username = usernameFromEmail(email || name);
+      const provider = payload.app_metadata?.provider || "google";
+      const authUser = {
+        id: payload.sub,
+        name,
+        email,
+        picture: payload.user_metadata?.avatar_url || payload.picture || "",
+        username,
+        provider
+      };
+
+      try {
+        localStorage.setItem("niyyah-auth-session", JSON.stringify({
+          accessToken,
+          refreshToken,
+          expiresAt: expiresIn ? Date.now() + expiresIn * 1000 : null
+        }));
+        localStorage.setItem("niyyah-auth-user", JSON.stringify(authUser));
+        localStorage.setItem("niyyah-profile", JSON.stringify({
+          displayName: name,
+          username,
+          provider,
+          email
+        }));
+      } catch {
+        // Storage may be unavailable in private or restricted browser sessions.
+      }
+
+      window.history.replaceState(null, "", window.location.pathname + window.location.search.replace(/[?&](access_token|refresh_token|expires_in|token_type)=[^&]*/g, ""));
+    }
+
+    consumeOAuthReturn();
+
     function authProfile() {
       const user = storedJSON("niyyah-auth-user", null);
       if (!user) return null;
@@ -1688,6 +2093,8 @@
       activeScreen: "entry-choice",
       entryFlow: null,
       entryIndex: 0,
+      onboardingFocus: storedText("niyyah-onboarding-focus", "understand"),
+      onboardingCircle: storedText("niyyah-onboarding-circle", "family"),
       finishedSurahName: "",
       finishedSurahNumber: null,
       surahQuery: "",
@@ -1705,6 +2112,8 @@
       duaPulseStatus: storedText("niyyah-dua-pulse-status"),
       communityReflections: storedJSON("niyyah-community-reflections", []),
       circleActivity: storedJSON("niyyah-circle-activity", { answers: [], reflection: "", submitted: false }),
+      selectedCircleFormat: storedText("niyyah-circle-format", "family_friends"),
+      circleFlowAction: storedText("niyyah-circle-flow-action", "start"),
       activeWordKey: null,
       vocabularyQuery: "",
       vocabularyFilter: "all",
@@ -1723,53 +2132,59 @@
       first: [
         {
           type: "logo",
-          title: "Understand the Qur'an One Ayah at a Time",
-          subtitle: "A calm space to read, understand, and reflect."
+          title: "Understand the Qur'an. Stay connected together.",
+          subtitle: "Read, listen, understand, reflect, and return with people you trust.",
+          statement: "One sincere ayah is enough to begin.",
+          footer: "No ads. Private by default. Source-aware."
         },
         {
-          type: "cards",
-          arabic: "اقرأ",
-          title: "Read with presence",
-          subtitle: "Move gently through Arabic, translation, meaning, and reflection.",
+          type: "focus",
+          eyebrow: "Make it yours",
+          title: "What would help you most?",
+          subtitle: "Choose one for now. You can explore the rest whenever you are ready.",
           cards: [
-            ["R", "Read", "Arabic and translation."],
-            ["U", "Understand", "Simple meanings and context."],
-            ["L", "Reflect", "Lessons for daily life."]
+            ["understand", "Understand an ayah", "Context, source notes, and key lessons"],
+            ["consistency", "Build a steady rhythm", "Gentle progress without guilt"],
+            ["reflection", "Reflect privately", "Journal, vocabulary, and personal action"],
+            ["together", "Learn with people", "Private circles, check-ins, and challenges"]
           ]
         },
         {
-          type: "lessons",
-          eyebrow: "Learning flow",
-          title: "More Than Recitation",
-          subtitle: "Learn what each surah means, why it was revealed, and what it teaches.",
+          type: "path",
+          eyebrow: "One ayah, fully",
+          title: "Go deeper without getting lost",
+          subtitle: "NIYYAH keeps the learning path clear, so every tap has a purpose.",
           cards: [
-            ["Surah Overview", "Theme, context, and key lessons before you begin."],
-            ["Ayah Understanding", "Simple meaning under each ayah without overwhelming you."],
-            ["Reflection", "A quiet journal for daily connection."]
-          ]
+            ["01", "Read & listen", "Arabic, translation, and verified recitation"],
+            ["02", "Understand", "Context and attributed source tafsir where available"],
+            ["03", "Reflect", "Private prompts, vocabulary, and one practical action"],
+            ["04", "Remember", "Quizzes, journeys, and gentle progress"]
+          ],
+          footer: "We would rather omit unsourced religious content than guess."
         },
         {
-          type: "begin",
-          eyebrow: "Begin with intention",
-          title: "Begin Your Journey",
-          subtitle: "Build a deeper connection with the Qur'an through understanding and reflection.",
-          arabic: "رَبِّ زِدْنِي عِلْمًا",
-          footer: "May Allah increase us in knowledge."
+          type: "circles",
+          eyebrow: "Better together",
+          title: "Open the Qur'an with people you trust",
+          subtitle: "Private Circles make consistency feel shared, not performative.",
+          footer: "Free to use. No ads, public feed, or private reflection sharing."
         }
       ],
       returning: [
         {
           type: "logo",
-          title: "Understand the Qur'an One Ayah at a Time",
-          subtitle: "A calm space to read, understand, and reflect."
+          title: "Come back to the Qur'an gently",
+          subtitle: "Continue your Qur'an learning without pressure.",
+          statement: "Start small. Stay sincere. Keep coming back.",
+          footer: "Built for people who want connection, not noise."
         },
         {
-          type: "begin",
+          type: "statement",
           eyebrow: "Begin with intention",
-          title: "Begin Your Journey",
-          subtitle: "Build a deeper connection with the Qur'an through understanding and reflection.",
-          arabic: "رَبِّ زِدْنِي عِلْمًا",
-          footer: "May Allah increase us in knowledge."
+          title: "Continue where you left off",
+          subtitle: "Return to your ayah, your reflection, or your circle.",
+          statement: "Your next sincere step is enough.",
+          footer: "Core Qur'an learning stays free."
         }
       ]
     };
@@ -1863,10 +2278,45 @@
 
     const reflectionMoods = ["Curious", "Hopeful", "Comforted", "Challenged", "Grateful", "Quiet"];
     const journalFilters = ["All", "Dua", "Action", "This Week"];
-    const circleDailyOptions = ["Read", "Reflected", "Made Dua"];
-    const duaPulseOptions = ["I'm Okay", "Make Dua For Me", "Heavy Day", "Grateful Today", "I Need A Reset"];
+    const circleDailyOptions = ["Read", "Understood", "Reflected"];
+    const duaPulseOptions = ["I'm okay", "Make dua for me", "Heavy day"];
+    const circleFormats = [
+      {
+        id: "family_friends",
+        title: "Qur'an Partner",
+        label: "Qur'an Partner",
+        description: "Two people learning side by side. Simple, private, and easy to return to.",
+        templateID: "seven-ayah-reset",
+        defaultName: "Qur'an Partner Circle",
+        defaultDescription: "One ayah. One shared journey. No pressure.",
+        memberCount: 2,
+        role: "Reader"
+      },
+      {
+        id: "creator_challenge",
+        title: "Creator Challenge",
+        label: "Creator Challenge",
+        description: "A short guided challenge people can join from a shared link or invite code.",
+        templateID: "weekly-reflection",
+        defaultName: "7-Day Qur'an Challenge",
+        defaultDescription: "Join me for a calm guided Qur'an reflection challenge.",
+        memberCount: 5,
+        role: "Host"
+      },
+      {
+        id: "msa_classroom",
+        title: "MSA / Classroom",
+        label: "MSA / Classroom",
+        description: "A larger host-led circle for youth groups, MSAs, halaqas, or classroom learning.",
+        templateID: "juz-amma-starter",
+        defaultName: "MSA Qur'an Circle",
+        defaultDescription: "A calm group circle for reading, context, reflection, and dua.",
+        memberCount: 12,
+        role: "Host"
+      }
+    ];
     const circleTemplates = [
-      { id: "seven-ayah-reset", title: "7 Ayah Reset", description: "Seven calm days, one ayah at a time.", memberLimit: 8 },
+      { id: "seven-ayah-reset", title: "7-Day Qur'an Reset", description: "Seven calm days, one ayah at a time.", memberLimit: 8 },
       { id: "fatihah-together", title: "Al-Fatihah Together", description: "Begin with the opening surah and shared reflection.", memberLimit: 12 },
       { id: "juz-amma-starter", title: "Juz Amma Starter", description: "A beginner-friendly path through short surahs.", memberLimit: 20 },
       { id: "weekly-reflection", title: "Weekly Reflection Circle", description: "A steady weekly rhythm for friends, families, or MSAs.", memberLimit: 20 },
@@ -2040,6 +2490,39 @@
       "A reminder that the Qur'an guides the heart and choices."
     ];
 
+    function applyAyahDeepLink() {
+      const params = new URLSearchParams(window.location.search);
+      const surahNumber = Number(params.get("surah"));
+      const ayahNumber = Number(params.get("ayah"));
+      if (!Number.isFinite(surahNumber) || !Number.isFinite(ayahNumber)) return;
+      const index = ayahs.findIndex(ayah => ayah.surahNumber === surahNumber && ayah.ayahNumber === ayahNumber);
+      if (index === -1) return;
+      state.currentIndex = index;
+      state.activeScreen = "ayah";
+      state.entryFlow = "returning";
+      state.tafsirOpen = false;
+      state.tafsirExpanded = false;
+    }
+
+    function applyCircleJoinDeepLink() {
+      const params = new URLSearchParams(window.location.search);
+      const code = String(params.get("join") || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
+      if (!code) return;
+      state.circleFlowAction = "join";
+      state.activeScreen = state.profile ? "circles" : "profile";
+      state.entryFlow = "returning";
+      window.setTimeout(() => {
+        const input = document.getElementById("circle-code");
+        if (input) {
+          input.value = code;
+          input.focus();
+        }
+      }, 120);
+    }
+
+    applyAyahDeepLink();
+    applyCircleJoinDeepLink();
+
     function currentAyah() {
       return ayahs[Math.min(Math.max(state.currentIndex, 0), ayahs.length - 1)];
     }
@@ -2080,6 +2563,10 @@
         localStorage.setItem("niyyah-last-discussion", JSON.stringify(state.lastDiscussion));
         localStorage.setItem("niyyah-reflection-mode", state.reflectionMode);
         localStorage.setItem("niyyah-reflection-mood", state.reflectionMood);
+        localStorage.setItem("niyyah-circle-format", state.selectedCircleFormat);
+        localStorage.setItem("niyyah-circle-flow-action", state.circleFlowAction);
+        localStorage.setItem("niyyah-onboarding-focus", state.onboardingFocus);
+        localStorage.setItem("niyyah-onboarding-circle", state.onboardingCircle);
       } catch {
         // The app remains usable when browser storage is unavailable.
       }
@@ -2098,21 +2585,83 @@
       void content.offsetWidth;
       content.style.animation = "";
       const nextButton = document.querySelector(`#${state.entryFlow === "first" ? "onboarding-flow" : "daily-entry"} [data-action="entry-next"]`);
-      if (nextButton) nextButton.textContent = state.entryIndex === pages.length - 1 ? "Begin" : "Next";
+      if (nextButton) nextButton.textContent = state.entryIndex === pages.length - 1 ? "Begin with one ayah" : "Continue";
     }
 
     function entryPageHTML(page) {
       if (page.type === "logo") {
         return `
-          <div class="entry-logo">ن</div>
-          <div class="brand" style="font-size:28px;text-align:center;margin-bottom:92px">NIYYAH</div>
+          <div class="entry-logo">N</div>
+          <div class="brand" style="font-size:28px;text-align:center;margin-bottom:42px">NIYYAH</div>
           <h1 class="title">${escapeHTML(page.title)}</h1>
           <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
+          ${page.statement ? `<div class="onboarding-dua" style="font-family:ui-serif,Georgia,serif;font-size:22px;line-height:1.35">${escapeHTML(page.statement)}</div>` : ""}
+          ${page.footer ? `<p class="source" style="font-weight:700;margin-top:18px;text-align:center">${escapeHTML(page.footer)}</p>` : ""}
+        `;
+      }
+      if (page.type === "focus") {
+        return `
+          <p class="eyebrow">${escapeHTML(page.eyebrow)}</p>
+          <h1 class="title">${escapeHTML(page.title)}</h1>
+          <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
+          <div class="onboarding-list">
+            ${page.cards.map(card => `
+              <button class="onboarding-choice${state.onboardingFocus === card[0] ? " selected" : ""}" data-onboarding-focus="${escapeHTML(card[0])}">
+                <span><strong>${escapeHTML(card[1])}</strong><span class="source" style="display:block;margin-top:4px">${escapeHTML(card[2])}</span></span>
+                <span class="onboarding-choice-mark">${state.onboardingFocus === card[0] ? "✓" : "○"}</span>
+              </button>
+            `).join("")}
+          </div>
+        `;
+      }
+      if (page.type === "path") {
+        return `
+          <p class="eyebrow">${escapeHTML(page.eyebrow)}</p>
+          <h1 class="title">${escapeHTML(page.title)}</h1>
+          <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
+          <div class="onboarding-path">
+            ${page.cards.map((card, index) => `
+              <div class="onboarding-path-row">
+                <span class="onboarding-path-number">${escapeHTML(card[0])}</span>
+                <span><strong>${escapeHTML(card[1])}</strong><span class="source" style="display:block;margin-top:4px">${escapeHTML(card[2])}</span></span>
+              </div>
+              ${index < page.cards.length - 1 ? `<div class="onboarding-path-line"></div>` : ""}
+            `).join("")}
+          </div>
+          <p class="source" style="font-weight:750;margin-top:22px;text-align:center;color:var(--olive)">${escapeHTML(page.footer)}</p>
+        `;
+      }
+      if (page.type === "circles") {
+        const circleCopy = {
+          family: ["3 people read today", "Share one ayah, a short reflection, or a dua pulse."],
+          friends: ["Your circle completed 5 gentle check-ins", "Keep one another close to the Qur'an without a public feed."],
+          classroom: ["The next guided session is ready", "Use optional roles, context, a prompt, and a closing dua."]
+        };
+        const active = circleCopy[state.onboardingCircle] || circleCopy.family;
+        return `
+          <p class="eyebrow">${escapeHTML(page.eyebrow)}</p>
+          <h1 class="title">${escapeHTML(page.title)}</h1>
+          <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
+          <div class="onboarding-circle-tabs">
+            <button class="onboarding-circle-tab${state.onboardingCircle === "family" ? " selected" : ""}" data-onboarding-circle="family">Family</button>
+            <button class="onboarding-circle-tab${state.onboardingCircle === "friends" ? " selected" : ""}" data-onboarding-circle="friends">Friends</button>
+            <button class="onboarding-circle-tab${state.onboardingCircle === "classroom" ? " selected" : ""}" data-onboarding-circle="classroom">MSA / Class</button>
+          </div>
+          <div class="onboarding-circle-preview">
+            <p class="reference">PRIVATE CIRCLE</p>
+            <p class="onboarding-circle-presence">${escapeHTML(active[0])}</p>
+            <p class="subtitle">${escapeHTML(active[1])}</p>
+            <div class="onboarding-values">
+              <span class="onboarding-value">Read</span>
+              <span class="onboarding-value">Reflected</span>
+              <span class="onboarding-value">Made dua</span>
+            </div>
+          </div>
+          <p class="source" style="font-weight:750;margin-top:18px;text-align:center">${escapeHTML(page.footer)}</p>
         `;
       }
       if (page.type === "cards") {
         return `
-          <div class="onboarding-arabic">${page.arabic}</div>
           <h1 class="title">${escapeHTML(page.title)}</h1>
           <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
           <div class="onboarding-list">
@@ -2130,11 +2679,20 @@
           </div>
         `;
       }
+      if (page.type === "statement") {
+        return `
+          <p class="eyebrow">${escapeHTML(page.eyebrow)}</p>
+          <h1 class="title">${escapeHTML(page.title)}</h1>
+          <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
+          <div class="onboarding-dua" style="font-family:ui-serif,Georgia,serif;font-size:24px;line-height:1.35">${escapeHTML(page.statement)}</div>
+          <p class="source" style="font-weight:700;margin-top:18px;text-align:center">${escapeHTML(page.footer)}</p>
+        `;
+      }
       return `
         <p class="eyebrow">${escapeHTML(page.eyebrow)}</p>
         <h1 class="title">${escapeHTML(page.title)}</h1>
         <p class="subtitle" style="text-align:center">${escapeHTML(page.subtitle)}</p>
-        <div class="onboarding-dua">${page.arabic}</div>
+        <div class="onboarding-dua">${escapeHTML(page.arabic || "")}</div>
         <p class="source" style="font-weight:700;margin-top:18px">${escapeHTML(page.footer)}</p>
       `;
     }
@@ -2299,6 +2857,18 @@
       return circleTemplates.find(item => item.id === templateID) || circleTemplates[0];
     }
 
+    function activeCircleFormat(formatID = state.selectedCircleFormat) {
+      return circleFormats.find(item => item.id === formatID) || circleFormats[0];
+    }
+
+    function surahAyahLabel(surah) {
+      const fullCount = Number(surah.versesCount || surah.ayahCount || 0);
+      const includedCount = Number(surah.includedAyahCount || fullCount || 0);
+      if (fullCount && includedCount && includedCount !== fullCount) return `${includedCount} included ayahs of ${fullCount}`;
+      if (fullCount || includedCount) return `${fullCount || includedCount} ayahs`;
+      return "ayah count unavailable";
+    }
+
     function circleCurrentAyah(circle) {
       if (!circle) return currentAyah();
       const surahAyahs = ayahs.filter(item => item.surahNumber === circle.surahNumber);
@@ -2383,93 +2953,159 @@
     function renderCircle() {
       const dashboard = document.getElementById("circle-dashboard");
       if (!dashboard) return;
+      const selectedFormat = activeCircleFormat();
+      const formatList = document.getElementById("circle-format-list");
+      if (formatList) {
+        formatList.innerHTML = circleFormats.map(format => `
+          <button class="mode-card${format.id === selectedFormat.id ? " active" : ""}" data-circle-format="${escapeHTML(format.id)}" aria-pressed="${format.id === selectedFormat.id ? "true" : "false"}">
+            <strong>${escapeHTML(format.title)}</strong>
+            <p class="source">${escapeHTML(format.description)}</p>
+          </button>
+        `).join("");
+      }
+      document.querySelectorAll("[data-circle-flow-action]").forEach(button => {
+        button.classList.toggle("active", button.dataset.circleFlowAction === state.circleFlowAction);
+      });
       const templateSelect = document.getElementById("circle-template");
       if (templateSelect) {
-        const selectedTemplate = templateSelect.value || state.circle?.challengeID || state.activeChallengeID || circleTemplates[0].id;
+        const selectedTemplate = templateSelect.value || state.circle?.challengeID || selectedFormat.templateID || state.activeChallengeID || circleTemplates[0].id;
         templateSelect.innerHTML = circleTemplates.map(template => `
           <option value="${escapeHTML(template.id)}"${template.id === selectedTemplate ? " selected" : ""}>${escapeHTML(template.title)} — ${escapeHTML(template.description)}</option>
         `).join("");
       }
+      const journeyList = document.getElementById("circle-journey-list");
+      if (journeyList) {
+        const selectedJourney = templateSelect?.value || selectedFormat.templateID || state.activeChallengeID || circleTemplates[0].id;
+        journeyList.innerHTML = circleTemplates.map(template => `
+          <button class="mode-card${template.id === selectedJourney ? " active" : ""}" data-circle-template-choice="${escapeHTML(template.id)}">
+            <strong>${escapeHTML(template.title)}</strong>
+            <p class="source">${escapeHTML(template.description)}</p>
+          </button>
+        `).join("");
+      }
+      document.querySelectorAll("[data-circle-start-panel], [data-circle-start-control], #circle-name, #circle-description, #circle-template, #circle-surah").forEach(element => {
+        element.hidden = state.circleFlowAction !== "start";
+      });
+      document.querySelectorAll("[data-circle-join-panel]").forEach(element => {
+        element.hidden = state.circleFlowAction !== "join";
+      });
       const surahSelect = document.getElementById("circle-surah");
       if (surahSelect) {
         const selectedSurah = Number(surahSelect.value || state.circle?.surahNumber || currentAyah().surahNumber);
         surahSelect.innerHTML = surahs.map(surah => `
-          <option value="${surah.id}"${surah.id === selectedSurah ? " selected" : ""}>${escapeHTML(surah.name)} — ${escapeHTML(surah.englishName)} (${surah.ayahCount} ayahs)</option>
+          <option value="${surah.id}"${surah.id === selectedSurah ? " selected" : ""}>${escapeHTML(surah.name)} — ${escapeHTML(surah.englishName || surah.translatedName || "")} (${escapeHTML(surahAyahLabel(surah))})</option>
         `).join("");
       }
       const accountPrompt = document.getElementById("circle-account-prompt");
       if (accountPrompt) {
         accountPrompt.innerHTML = state.profile ? `
           <div class="profile-summary">
-            <div class="avatar">${escapeHTML(profileInitials(state.profile.displayName))}</div>
+            <div class="avatar">${escapeHTML(profileInitials(profileDisplayName()))}</div>
             <div>
-              <strong>${escapeHTML(state.profile.displayName)}</strong>
-              <span>@${escapeHTML(state.profile.username)} • Signed in locally</span>
+              <strong>${escapeHTML(profileDisplayName())}</strong>
+              <span>@${escapeHTML(profileUsername())} • Circle profile active</span>
             </div>
           </div>
         ` : `
           <div class="card">
             <p class="eyebrow">Account required</p>
-            <h3 class="title" style="font-size:22px">Create your small NIYYAH profile first</h3>
-            <p class="body" style="margin-top:12px">Circles need an account so your membership and progress can follow you across devices.</p>
-            <button class="primary" data-action="open-profile">Create Local Account</button>
+            <h3 class="title" style="font-size:22px">Create your NIYYAH profile first</h3>
+            <p class="body" style="margin-top:12px">Your profile is used for your name, circle initials, and saved progress on this device.</p>
+            <button class="primary" data-action="open-profile">Create Profile</button>
           </div>
         `;
       }
+      document.querySelectorAll("[data-circle-setup-card]").forEach(card => {
+        card.hidden = Boolean(state.circle);
+      });
       if (!state.circle) {
         dashboard.innerHTML = `
           <div class="card">
             <p class="eyebrow">Your circle</p>
-            <h3 class="title" style="font-size:22px">No circle joined yet</h3>
-            <p class="body" style="margin-top:12px">Create a private circle or join with a code to see shared progress without rankings.</p>
+            <h3 class="title" style="font-size:22px">Understand together, without pressure.</h3>
+            <p class="body" style="margin-top:12px">Start with one Qur'an partner, invite family, or create a calm group for your MSA or class.</p>
           </div>
         `;
         return;
       }
       const circle = state.circle;
-      const template = activeCircleTemplate(circle.templateID || circle.challengeID);
+      const circleFormat = activeCircleFormat(circle.formatID);
+      const template = activeCircleTemplate(circle.templateID || circle.challengeID || circleFormat.templateID);
       const challenge = challenges.find(item => item.id === circle.challengeID) || activeChallenge();
       const statuses = state.circleDailyStatuses || new Set();
       const statusCount = [...statuses].length;
       const progress = Math.min(100, Math.max(0, Number(circle.completionPercent) || 0));
       const circleAyah = circleCurrentAyah(circle);
-      const members = circle.members || sampleCircleMembers();
+      const members = (Array.isArray(circle.members) && circle.members.length ? circle.members : sampleCircleMembers()).map((member, index) => ({
+        name: safeText(member.name, index === 0 ? profileDisplayName() : "Invited Friend"),
+        username: safeText(member.username, index === 0 ? profileUsername() : "friend"),
+        owner: Boolean(member.owner),
+        active: Boolean(member.active),
+        color: safeText(member.color, index === 0 ? "#717b5b" : "#bd6a76")
+      }));
+      if (members.length === 1 && activeCircleFormat(circle.formatID).id === "family_friends") {
+        members.push({ name: "Qur'an Partner", username: "waiting", owner: false, active: false, color: "#bd6a76" });
+      }
       const activity = state.circleActivity || { answers: [], reflection: "", submitted: false };
       const circleQuestions = circleActivityQuestions();
       const answered = circleQuestions.filter((_, index) => activity.answers[index] !== undefined).length;
-      const inviteCode = circle.inviteCode || "NIYYAH";
+      const inviteCode = safeText(circle.inviteCode, "NIYYAH");
+      const circleName = safeText(circle.name, "NIYYAH Reflection Circle");
+      const circleDescription = safeText(circle.description, "A gentle shared space to understand one ayah at a time.");
+      const memberCount = Math.max(safeNumber(circle.memberCount, members.length || 1), members.length || 1);
+      const activeToday = Math.max(0, safeNumber(circle.activeToday, statusCount));
+      const currentSurah = safeText(circle.currentSurah, circleAyah.surahName || "Current surah");
+      const currentJourney = safeText(circle.currentJourney || template.title, circleFormat.title || "Circle journey");
       const daysCompleted = circle.daysCompleted ?? Math.min(challenge.days.length, Math.max(0, Math.round((progress / 100) * challenge.days.length)));
       const daysRemaining = Math.max(0, challenge.days.length - daysCompleted);
+      const journeyTotalDays = Math.max(challenge.days.length, daysCompleted + daysRemaining, 1);
+      const currentDay = Math.min(journeyTotalDays, Math.max(1, daysCompleted + 1));
+      const allStagesComplete = circleDailyOptions.every(status => statuses.has(status));
+      const sharedStreak = Math.max(0, daysCompleted || (allStagesComplete ? 1 : 0));
       dashboard.innerHTML = `
-        <div class="card">
-          <p class="eyebrow">Circle dashboard</p>
-          <h3 class="title" style="font-size:22px">${escapeHTML(circle.name)}</h3>
-          <p class="body" style="margin-top:10px">${escapeHTML(circle.description)}</p>
+        <div class="circle-home-hero">
+          <p class="eyebrow">Circle home</p>
+          <h3 class="title" style="font-size:24px">${escapeHTML(circleName)}</h3>
+          <p class="body" style="margin-top:10px">${escapeHTML(circleDescription)}</p>
           <div class="metric-strip">
-            <div class="metric-pill"><strong>${escapeHTML(String(circle.memberCount))}</strong><span>members</span></div>
-            <div class="metric-pill"><strong>${escapeHTML(String(daysCompleted))}</strong><span>days complete</span></div>
-            <div class="metric-pill"><strong>${escapeHTML(String(daysRemaining))}</strong><span>days left</span></div>
-            <div class="metric-pill"><strong>${escapeHTML(String(statusCount))}/3</strong><span>today's statuses</span></div>
+            <div class="metric-pill"><strong>${escapeHTML(String(memberCount))}</strong><span>members</span></div>
+            <div class="metric-pill"><strong>Day ${escapeHTML(String(currentDay))}</strong><span>of your journey</span></div>
+            <div class="metric-pill"><strong>${escapeHTML(String(sharedStreak))}</strong><span>shared days</span></div>
+            <div class="metric-pill"><strong>${escapeHTML(String(statusCount))}/3</strong><span>today</span></div>
           </div>
-          <div class="status-note">Group completion: ${progress}%. Completion certificate unlocks when the circle reaches 100%.</div>
+          ${allStagesComplete ? '<div class="celebration-note">You showed up together.</div>' : '<div class="status-note">Continue together whenever you are ready.</div>'}
           <div class="info-stack">
-            <div class="info-block"><strong>Current Ayah</strong><p class="body">${escapeHTML(circleAyah.reference)}</p><p class="source">${escapeHTML(compactChoice(circleAyah.translation, 120))}</p></div>
-            <div class="info-block"><strong>Current Surah</strong><p class="body">${escapeHTML(circle.currentSurah)}</p></div>
-            <div class="info-block"><strong>Current Challenge</strong><p class="body">${escapeHTML(circle.currentJourney || template.title)}</p></div>
-            <div class="info-block"><strong>Template</strong><p class="body">${escapeHTML(template.description)}</p></div>
-            <div class="info-block"><strong>Completion Indicator</strong><p class="body">${circle.activeToday} ${circle.activeToday === 1 ? "member has" : "members have"} checked in today.</p></div>
+            <div class="info-block"><strong>Today's Shared Ayah</strong><p class="body">${escapeHTML(circleAyah.reference)}</p><p class="source">${escapeHTML(compactChoice(circleAyah.translation, 120))}</p></div>
+            <div class="info-block"><strong>Journey Details</strong><p class="body">${escapeHTML(currentJourney)}</p><p class="source">${escapeHTML(currentSurah)} • Day ${escapeHTML(String(currentDay))} of ${escapeHTML(String(journeyTotalDays))}</p></div>
+            <div class="info-block"><strong>Shared Completion</strong><p class="body">${progress}% complete</p><p class="source">${activeToday} ${activeToday === 1 ? "person has" : "people have"} checked in today.</p></div>
           </div>
           <div class="progress-track" style="margin-top:18px"><i style="--value:${progress}%"></i></div>
-          <p class="source">Your circle is ${progress}% through ${escapeHTML(circle.currentSurah)}. This dashboard is built around the surah selected when the circle was created.</p>
-          <button class="secondary" data-action="open-circle-ayah">Open Current Ayah</button>
-          ${circle.memberCount < 2 ? '<p class="status-note">Invite at least one friend to begin shared progress.</p>' : ""}
+          <button class="primary" data-action="open-circle-ayah">Continue Today's Ayah</button>
+          ${memberCount < 2 ? '<p class="status-note">Invite at least one friend to begin shared progress.</p>' : ""}
           <div class="divider"></div>
-          <p class="eyebrow">Today in your circle</p>
-          <p class="body">Mark only what you actually completed. This is private and gentle, not a leaderboard.</p>
+          <p class="eyebrow">Your check-in</p>
+          <p class="body">Tap what you completed today. Your journal writing stays private.</p>
           <div class="status-grid">
             ${circleDailyOptions.map(status => `
               <button class="chip${statuses.has(status) ? " active" : ""}" data-circle-status="${escapeHTML(status)}">${escapeHTML(status)}</button>
             `).join("")}
+          </div>
+          <div class="member-status-grid">
+            ${members.map((member, index) => {
+              const memberStages = index === 0 ? circleDailyOptions.map(stage => statuses.has(stage)) : circleDailyOptions.map((_, stageIndex) => Boolean(member.active && stageIndex < 2));
+              return `
+                <div class="member-status-row">
+                  <div class="avatar" style="background:${escapeHTML(member.color)}">${escapeHTML(profileInitials(member.name))}</div>
+                  <div>
+                    <strong>${escapeHTML(member.name)}</strong>
+                    <p class="source">${index === 0 ? "Your check-in" : member.active ? "Your partner reflected today" : "Waiting for your Qur'an partner"}</p>
+                    <div class="stage-dots">
+                      ${circleDailyOptions.map((stage, stageIndex) => `<span class="stage-dot${memberStages[stageIndex] ? " done" : ""}">${escapeHTML(stage)}</span>`).join("")}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join("")}
           </div>
           <div class="friend-card">
             <p class="eyebrow">Dua Pulse</p>
@@ -2505,19 +3141,12 @@
             <p class="body">What is one choice you can make more intentionally after reading ${escapeHTML(circleAyah.reference)}?</p>
             <textarea id="circle-reflection" class="mini-input" placeholder="Write a short response for your circle...">${escapeHTML(activity.reflection || "")}</textarea>
             <button class="secondary" data-action="save-circle-activity">${activity.submitted ? "Update My Response" : "Share With Circle"}</button>
-            <p class="status-note">${activity.submitted ? "Your response is saved for this circle." : `${circle.memberCount} ${circle.memberCount === 1 ? "member is" : "members are"} in this circle. No rankings, just learning together.`}</p>
+            <p class="status-note">${activity.submitted ? "Your response is saved for this circle." : `${memberCount} ${memberCount === 1 ? "member is" : "members are"} in this circle. No rankings, just learning together.`}</p>
           </div>
           <div class="divider"></div>
           <p class="eyebrow">Invite friends</p>
-          <p class="body">Share this code or invite link. Friends sign in, then join this circle.</p>
+          <p class="body">Share the private code or invitation message with people you trust.</p>
           <div class="invite-code">${escapeHTML(inviteCode)}</div>
-          <div class="qr-wrap">
-            <div class="qr-code" aria-label="QR-style invite preview">${inviteQR(inviteCode)}</div>
-            <div>
-              <strong>QR invite preview</strong>
-              <p class="source" style="margin-top:6px">The final hosted app should generate a scannable QR code from the real circle link.</p>
-            </div>
-          </div>
           <div class="share-grid">
             <button class="secondary" data-circle-share="code">Copy Code</button>
             <button class="secondary" data-circle-share="link">Copy Link</button>
@@ -2537,6 +3166,10 @@
                 <span class="tag">${member.owner ? "Creator" : "Member"}</span>
               </div>
             `).join("")}
+          </div>
+          <div class="info-stack">
+            <div class="info-block"><strong>Private Circle Settings</strong><p class="body">No public profiles, no leaderboards, no private journal sharing.</p></div>
+            ${progress >= 100 ? `<div class="info-block"><strong>Shareable Completion Card</strong><p class="body">${escapeHTML(circleName)} completed ${escapeHTML(currentJourney)}. We showed up together.</p></div>` : ""}
           </div>
           <button class="quiet" data-action="leave-circle">Leave Circle</button>
         </div>
@@ -2564,6 +3197,24 @@
       return name.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 18) || "niyyahlearner";
     }
 
+    function safeText(value, fallback = "") {
+      const text = String(value ?? "").trim();
+      return text || fallback;
+    }
+
+    function safeNumber(value, fallback = 0) {
+      const number = Number(value);
+      return Number.isFinite(number) ? number : fallback;
+    }
+
+    function profileDisplayName(profile = state.profile) {
+      return safeText(profile?.displayName, "NIYYAH Learner");
+    }
+
+    function profileUsername(profile = state.profile) {
+      return safeText(profile?.username, usernameFromName(profileDisplayName(profile)));
+    }
+
     function generateInviteCode() {
       const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
       return Array.from({ length: 6 }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join("");
@@ -2571,7 +3222,7 @@
 
     function sampleCircleMembers() {
       return [
-        { name: state.profile?.displayName || "You", username: state.profile?.username || "niyyahlearner", owner: true, active: true, color: "#717b5b" },
+        { name: profileDisplayName(), username: profileUsername(), owner: true, active: true, color: "#717b5b" },
         { name: "Invited Friend", username: "friend", active: false, color: "#bd6a76" }
       ];
     }
@@ -2604,7 +3255,7 @@
       const content = document.getElementById("profile-content");
       if (!content) return;
       document.querySelectorAll("[data-profile-home-button]").forEach(button => {
-        button.textContent = state.profile ? `@${state.profile.username}` : "Create profile";
+        button.textContent = state.profile ? `@${profileUsername()}` : "Create profile";
       });
       if (!state.profile) {
         content.innerHTML = `
@@ -2617,7 +3268,14 @@
             <div class="divider"></div>
             <input id="profile-name" class="mini-input" type="text" maxlength="40" placeholder="Display name" aria-label="Display name">
             <input id="profile-username" class="mini-input" type="text" maxlength="20" placeholder="Username" aria-label="Username">
-            <button class="primary" data-action="create-profile">Create Local Profile</button>
+            <button class="primary" data-action="create-profile">Create Profile on This Device</button>
+          </div>
+          <div class="card">
+            <p class="eyebrow">Trust & sources</p>
+            <h2 class="title">Help NIYYAH stay accurate</h2>
+            <p class="body" style="margin-top:12px">Read how NIYYAH handles Qur'an text, translation, recitation, source tafsir, and corrections.</p>
+            <a class="secondary" href="../sources-trust.html">Sources & Trust</a>
+            <a class="secondary" href="../feedback.html">Send Feedback</a>
           </div>
         `;
         return;
@@ -2625,10 +3283,10 @@
       content.innerHTML = `
         <div class="card">
           <div class="profile-summary" style="margin-top:0">
-            <div class="avatar" style="width:64px;height:64px;flex-basis:64px;font-size:20px">${escapeHTML(profileInitials(state.profile.displayName))}</div>
+            <div class="avatar" style="width:64px;height:64px;flex-basis:64px;font-size:20px">${escapeHTML(profileInitials(profileDisplayName()))}</div>
             <div>
-              <strong style="font-size:20px">${escapeHTML(state.profile.displayName)}</strong>
-              <span>@${escapeHTML(state.profile.username)}</span>
+              <strong style="font-size:20px">${escapeHTML(profileDisplayName())}</strong>
+              <span>@${escapeHTML(profileUsername())}</span>
             </div>
           </div>
           <div class="stats" style="margin-top:18px">
@@ -2639,9 +3297,14 @@
             <div class="info-block"><strong>Current Journey</strong><p class="body">${escapeHTML(journeys.find(item => item.id === state.activeJourneyID)?.title || "Understanding Juz 30")}</p></div>
             <div class="info-block"><strong>Circle</strong><p class="body">${escapeHTML(state.circle?.name || "No circle joined yet")}</p></div>
             <div class="info-block"><strong>Privacy</strong><p class="body">Friends see your display name, username, circle progress, and whether you reflected today. Your private journal stays private.</p></div>
+            <div class="info-block"><strong>Account Control</strong><p class="body">Sign out keeps your saved learning on this device. Delete account removes your local profile, journal, progress, favorites, vocabulary, and circle data.</p></div>
+            <div class="info-block"><strong>Sources & Trust</strong><p class="body">NIYYAH cites verified source material where available and leaves unsourced religious content out instead of guessing.</p></div>
           </div>
+          <a class="secondary" href="../sources-trust.html">Sources & Trust</a>
+          <a class="secondary" href="../feedback.html">Send Feedback</a>
           <button class="secondary" data-action="open-circles">View NIYYAH Circle</button>
           <button class="quiet" data-action="remove-profile">Sign Out</button>
+          <button class="danger" data-action="delete-account">Delete Account & Local Data</button>
         </div>
       `;
     }
@@ -2676,9 +3339,29 @@
       const readingAyah = currentAyah();
       const ayah = learningContextAyah();
       document.querySelectorAll("[data-current-reference]").forEach(el => el.textContent = readingAyah.reference);
-      document.querySelectorAll("[data-current-arabic]").forEach(el => el.textContent = readingAyah.arabic);
+      const visibleArabicUthmani = String(readingAyah.arabicUthmani || readingAyah.arabic || "").trim();
+      document.querySelectorAll("[data-current-arabic]").forEach(el => {
+        el.textContent = visibleArabicUthmani;
+        el.setAttribute("lang", "ar");
+        el.setAttribute("dir", "rtl");
+        el.dataset.sourceField = "arabicUthmani";
+      });
       document.querySelectorAll("[data-current-surah]").forEach(el => el.textContent = ayah.surahName);
       document.querySelectorAll("[data-current-translation]").forEach(el => el.innerHTML = explainableText(readingAyah.translation));
+      document.querySelectorAll("[data-current-transliteration]").forEach(el => {
+        const value = readingAyah.transliteration || "";
+        el.textContent = value;
+        el.hidden = !value;
+      });
+      document.querySelectorAll("[data-current-audio-source]").forEach(el => {
+        const value = readingAyah.audioReciter ? `Verified reciter audio: ${readingAyah.audioReciter}` : "";
+        el.textContent = value;
+        el.hidden = !value;
+      });
+      const hasVerifiedAudio = readingAyah.audioUrl && readingAyah.audioType === "verified_reciter_audio" && readingAyah.ttsAllowed === false;
+      document.querySelectorAll("[data-audio-controls]").forEach(el => {
+        el.hidden = !hasVerifiedAudio;
+      });
       document.querySelectorAll("[data-current-translation-source]").forEach(el => el.textContent = readingAyah.translationSource || "");
       setReviewedField("[data-surah-main-theme]", ayah.surahMainTheme);
       setReviewedField("[data-surah-historical-context]", ayah.surahHistoricalContext);
@@ -2688,44 +3371,35 @@
         el.textContent = ayah.surahTafsirSource ? `Source: ${ayah.surahTafsirSource}` : "";
       });
       document.querySelectorAll("[data-surah-content-status]").forEach(el => {
-        const hasOverview = cleanText(ayah.surahMainTheme) || cleanText(ayah.surahHistoricalContext) || cleanText(ayah.surahRevelationReason) || cleanText(ayah.surahKeyLessons);
-        if (hasOverview && ayah.beginnerContentStatus === "draft_pending_scholar_review") {
-          el.textContent = "Draft surah overview, pending scholarly review.";
-        } else if (!hasOverview) {
-          el.textContent = "Surah overview is under scholarly review. Translation and source tafsir remain available.";
-        } else {
-          el.textContent = "";
-        }
+        el.textContent = "";
       });
-      const simpleMeaning = ayah.ayahSimpleMeaning || ayah.beginnerTafsirSummary || ayah.translation;
+      const simpleMeaning = ayah.ayahSimpleMeaning || ayah.beginnerTafsirSummary;
       const hasBeginnerMeaning = Boolean(ayah.ayahSimpleMeaning || ayah.beginnerTafsirSummary);
-      const simpleMeaningTitle = hasBeginnerMeaning
-        ? ayah.beginnerContentStatus === "draft_pending_scholar_review" ? "Draft Simple Meaning" : "Simple Meaning"
-        : "Verified Translation";
       setReviewedField("[data-ayah-surah-context]", ayah.surahHistoricalContext);
       setReviewedField("[data-ayah-revelation-reason]", ayah.surahRevelationReason);
-      document.querySelectorAll("[data-ayah-simple-meaning-title]").forEach(el => el.textContent = simpleMeaningTitle);
-      document.querySelectorAll("[data-ayah-simple-meaning]").forEach(el => el.innerHTML = explainableText(simpleMeaning));
+      document.querySelectorAll("[data-ayah-simple-meaning-title]").forEach(el => el.textContent = "Simple Meaning");
+      setReviewedField("[data-ayah-simple-meaning]", simpleMeaning);
       document.querySelectorAll("[data-beginner-content-status]").forEach(el => {
-        if (hasBeginnerMeaning && ayah.beginnerContentStatus === "draft_pending_scholar_review") {
-          el.textContent = "Draft beginner explanation, pending scholarly review.";
-        } else if (!hasBeginnerMeaning) {
-          el.textContent = "Beginner explanation is under scholarly review. Translation and source tafsir remain available.";
-        } else {
-          el.textContent = "";
-        }
+        el.textContent = "";
       });
       setReviewedField("[data-ayah-practical-lesson]", ayah.ayahPracticalLesson);
       setReviewedField("[data-ayah-connection]", ayah.ayahConnection);
+      const hasSourceTafsir = Boolean(cleanText(readingAyah.tafsirSummary));
+      if (!hasSourceTafsir) state.tafsirExpanded = false;
       document.querySelectorAll("[data-current-tafsir]").forEach(el => {
-        el.textContent = readingAyah.tafsirSummary;
-        el.hidden = !state.tafsirExpanded;
+        el.textContent = hasSourceTafsir ? readingAyah.tafsirSummary : "";
+        el.hidden = !state.tafsirExpanded || !hasSourceTafsir;
       });
-      document.querySelectorAll("[data-current-source]").forEach(el => el.textContent = readingAyah.tafsirSource);
+      document.querySelectorAll("[data-current-source]").forEach(el => {
+        el.textContent = cleanText(readingAyah.tafsirSource) || cleanText(readingAyah.surahTafsirSource) || "";
+      });
       const rangeText = readingAyah.tafsirIsSharedPassage
         ? `Shared tafsir passage for ${readingAyah.tafsirRangeLabel}`
         : `Tafsir for ${readingAyah.tafsirRangeLabel || readingAyah.reference}`;
-      document.querySelectorAll("[data-current-tafsir-range]").forEach(el => el.textContent = rangeText);
+      document.querySelectorAll("[data-current-tafsir-range]").forEach(el => {
+        el.textContent = hasSourceTafsir ? rangeText : "";
+        el.hidden = !hasSourceTafsir;
+      });
       document.querySelectorAll("[data-current-prompt]").forEach(el => el.textContent = activeReflectionPrompt(readingAyah));
       document.querySelectorAll("[data-surah-progress]").forEach(el => el.textContent = surahProgressText(readingAyah));
       const completion = `${state.completed.size} of ${ayahs.length} ayahs`;
@@ -2743,8 +3417,11 @@
       tafsir.hidden = !state.tafsirOpen;
       document.querySelector('[data-action="understand"]').textContent = state.tafsirOpen ? "Hide Understanding" : "Understand";
       const expandButton = document.querySelector('[data-action="toggle-tafsir-length"]');
-      expandButton.hidden = !state.tafsirOpen;
+      expandButton.hidden = !state.tafsirOpen || !hasSourceTafsir;
       expandButton.textContent = state.tafsirExpanded ? "Hide Source Tafsir" : "Read Source Tafsir";
+      document.querySelectorAll("[data-current-source]").forEach(el => {
+        el.hidden = !state.tafsirExpanded || !hasSourceTafsir;
+      });
       document.querySelectorAll("[data-finished-surah]").forEach(el => el.textContent = state.finishedSurahName || "Beautiful work");
       document.querySelectorAll("[data-review-lessons]").forEach(el => el.textContent = topLessons(ayah).join(" "));
       document.querySelectorAll("[data-review-question]").forEach(el => el.textContent = `How can you practice one lesson from ${ayah.surahName} today?`);
@@ -2804,7 +3481,7 @@
           : `${surah.includedAyahCount} included ayahs of ${surah.versesCount}`;
         return `${header}
           <button class="surah-button" data-surah="${surah.id}">
-            <strong>${escapeHTML(surah.name)} • ${escapeHTML(surah.arabicName)}</strong>
+            <strong>${escapeHTML(surah.name)} • <span lang="ar" dir="rtl">${escapeHTML(surah.arabicName)}</span></strong>
             <span>${escapeHTML(surah.translatedName)} • ${escapeHTML(juzLabel)} • ${escapeHTML(ayahLabel)}</span>
           </button>
         `;
@@ -3325,8 +4002,35 @@
         state.finishedSurahNumber = null;
         state.reviewSurahNumber = null;
         state.quiz = { surahNumber: null, questions: [], answers: [], completed: false, score: 0 };
+        stopVerifiedRecitation();
         show("start");
       }
+    }
+
+    function applyCircleFormat(formatID) {
+      const previousFormat = activeCircleFormat();
+      const format = activeCircleFormat(formatID);
+      state.selectedCircleFormat = format.id;
+      state.activeChallengeID = format.templateID;
+      state.circleFlowAction = "start";
+
+      const nameInput = document.getElementById("circle-name");
+      const descriptionInput = document.getElementById("circle-description");
+      const templateInput = document.getElementById("circle-template");
+
+      if (nameInput && (!nameInput.value.trim() || nameInput.value.trim() === previousFormat.defaultName)) {
+        nameInput.value = format.defaultName;
+      }
+      if (descriptionInput && (!descriptionInput.value.trim() || descriptionInput.value.trim() === previousFormat.defaultDescription)) {
+        descriptionInput.value = format.defaultDescription;
+      }
+      if (templateInput) templateInput.value = format.templateID;
+
+      render();
+      window.setTimeout(() => {
+        document.querySelector("[data-circle-start-panel]")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 60);
+      showToast(`${format.title} setup ready`);
     }
 
     function movePreviousAyah() {
@@ -3335,6 +4039,16 @@
       state.currentIndex = Math.max(state.currentIndex - 1, firstIndexInSurah);
       state.tafsirOpen = false;
       state.tafsirExpanded = false;
+      stopVerifiedRecitation();
+      render();
+      show("ayah");
+    }
+
+    function moveNextAyah() {
+      state.currentIndex = Math.min(state.currentIndex + 1, ayahs.length - 1);
+      state.tafsirOpen = false;
+      state.tafsirExpanded = false;
+      stopVerifiedRecitation();
       render();
       show("ayah");
     }
@@ -3355,15 +4069,16 @@
         return;
       }
       if (state.circle) {
-        showToast("Free preview supports one active circle. Leave your current circle before creating another.");
+        showToast("This version supports one active circle. Leave your current circle before creating another.");
         return;
       }
       const nameInput = document.getElementById("circle-name");
       const descriptionInput = document.getElementById("circle-description");
       const templateInput = document.getElementById("circle-template");
       const surahInput = document.getElementById("circle-surah");
-      const name = nameInput.value.trim();
-      const description = descriptionInput.value.trim();
+      const format = activeCircleFormat();
+      const name = safeText(nameInput.value, format.defaultName);
+      const description = safeText(descriptionInput.value, format.defaultDescription);
       const template = activeCircleTemplate(templateInput?.value || state.activeChallengeID);
       const challenge = challenges.find(item => item.id === template.id) || activeChallenge();
       const selectedSurahNumber = Number(surahInput?.value || currentAyah().surahNumber);
@@ -3371,10 +4086,8 @@
       const selectedSurahAyahs = ayahs.filter(item => item.surahNumber === selectedSurah.id);
       const firstCircleAyah = selectedSurahAyahs[0] || currentAyah();
       const selectedSurahCompleted = selectedSurahAyahs.filter(item => state.completed.has(item.id)).length;
-      if (!name) {
-        nameInput.focus();
-        return;
-      }
+      const memberName = profileDisplayName();
+      const memberUsername = profileUsername();
       state.activeChallengeID = challenge.id;
       state.circleDailyStatuses = new Set();
       state.duaPulseStatus = "";
@@ -3382,6 +4095,8 @@
         id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
         name,
         description: description || "A private space to understand and reflect together.",
+        formatID: format.id,
+        mode: format.label,
         currentSurah: selectedSurah.name,
         surahNumber: selectedSurah.id,
         currentAyahID: firstCircleAyah.id,
@@ -3389,13 +4104,14 @@
         currentJourney: template.title,
         templateID: template.id,
         challengeID: challenge.id,
-        memberCount: 1,
+        memberCount: format.memberCount,
+        userRole: format.role,
         activeToday: reflectionStreak() > 0 ? 1 : 0,
         inviteCode: generateInviteCode(),
         members: [
           {
-            name: state.profile.displayName,
-            username: state.profile.username,
+            name: memberName,
+            username: memberUsername,
             owner: true,
             active: reflectionStreak() > 0,
             color: "#717b5b"
@@ -3424,6 +4140,8 @@
         id: `local-${code}`,
         name: "NIYYAH Reflection Circle",
         description: "A gentle shared space to understand one ayah at a time.",
+        formatID: "family_friends",
+        mode: "Family & Friends",
         currentSurah: currentAyah().surahName,
         surahNumber: currentAyah().surahNumber,
         currentAyahID: currentAyah().id,
@@ -3441,7 +4159,7 @@
         createdDate: new Date().toISOString()
       };
       render();
-      showToast("Circle joined locally");
+      showToast("Circle joined");
     }
 
     function createProfile() {
@@ -3460,7 +4178,69 @@
         createdAt: new Date().toISOString()
       };
       render();
-      showToast("Local profile created");
+      showToast("Profile saved on this device");
+    }
+
+    function signOutLocalProfile() {
+      state.profile = null;
+      state.circle = null;
+      state.circleDailyStatuses = new Set();
+      state.duaPulseStatus = "";
+      try {
+        localStorage.removeItem("niyyah-auth-user");
+        localStorage.removeItem("niyyah-profile");
+        localStorage.removeItem("niyyah-circle");
+        localStorage.removeItem("niyyah-circle-daily-statuses");
+        localStorage.removeItem("niyyah-dua-pulse-status");
+      } catch {
+        // Storage may be unavailable in a restricted browser context.
+      }
+      render();
+      showToast("Signed out");
+    }
+
+    function deleteAccountAndLocalData() {
+      const confirmed = window.confirm(
+        "Delete your NIYYAH account data from this device? This removes your local profile, journal, progress, favorites, vocabulary, circle data, and onboarding state."
+      );
+      if (!confirmed) return;
+
+      try {
+        niyyahStorageKeys.forEach(key => localStorage.removeItem(key));
+      } catch {
+        // Storage may be unavailable in a restricted browser context.
+      }
+
+      state.currentIndex = 0;
+      state.completed = new Set();
+      state.reflections = [];
+      state.reflectionDates = [];
+      state.favorites = [];
+      state.vocabulary = [];
+      state.memorization = {};
+      state.understandingViewed = new Set();
+      state.finishedSurahs = new Set();
+      state.challengeProgress = {};
+      state.activeChallengeID = "seven-ayah-reset";
+      state.activeJourneyID = "juz-30";
+      state.profile = null;
+      state.circle = null;
+      state.circleDailyStatuses = new Set();
+      state.duaPulseStatus = "";
+      state.communityReflections = [];
+      state.circleActivity = { answers: [], reflection: "", submitted: false };
+      state.lastDiscussion = null;
+      state.reflectionMode = "Meaning";
+      state.reflectionMood = "Curious";
+      state.journalQuery = "";
+      state.journalFilter = "All";
+      state.quiz = { surahNumber: null, questions: [], answers: [], completed: false, score: 0 };
+      state.activeScreen = "entry-choice";
+      state.entryFlow = null;
+      state.entryIndex = 0;
+      render();
+      show("entry-choice");
+      showToast("Account data deleted from this device");
     }
 
     function joinCircleByCode() {
@@ -3520,8 +4300,11 @@
     }
 
     function circleInviteText() {
-      const code = state.circle?.inviteCode || "NIYYAH";
-      return `Join my NIYYAH circle: ${state.circle?.name || "Reflection Circle"}\n\nInvite code: ${code}\nhttps://niyyahhapp.github.io/niyyah-app/app/?circle=${code}`;
+      const code = state.circle ? safeText(state.circle.inviteCode, "NIYYAH") : "NIYYAH";
+      const circle = state.circle || {};
+      const journey = safeText(circle.currentJourney, "7-Day Qur'an Reset");
+      const circleName = safeText(circle.name, "NIYYAH Circle");
+      return `Join my ${journey} on NIYYAH.\n\nWe'll understand one ayah together, without comparison or pressure.\n\nCircle: ${circleName}\nInvite code: ${code}\nhttps://niyyahhapp.github.io/niyyah-app/app/?circle=${code}`;
     }
 
     async function shareCircleInvite(channel) {
@@ -3742,6 +4525,73 @@
       }
     }
 
+    function stopVerifiedRecitation() {
+      if (audioState.element) {
+        audioState.element.pause();
+        audioState.element.currentTime = 0;
+      }
+      audioState.element = null;
+      audioState.currentlyPlayingSurah = null;
+      audioState.currentlyPlayingAyah = null;
+      audioState.currentlyPlayingAudioURL = "";
+      audioState.isPlaying = false;
+      audioState.playbackProgress = 0;
+    }
+
+    function prepareVerifiedRecitation(ayah = currentAyah()) {
+      if (!ayah.audioUrl || ayah.audioType !== "verified_reciter_audio" || ayah.ttsAllowed !== false) {
+        showToast("Audio is currently unavailable for this ayah.");
+        return null;
+      }
+      const alreadyLoaded = audioState.element && audioState.currentlyPlayingAudioURL === ayah.audioUrl;
+      if (!alreadyLoaded) {
+        stopVerifiedRecitation();
+        audioState.element = new Audio(ayah.audioUrl);
+        audioState.element.preload = "metadata";
+        audioState.currentlyPlayingSurah = ayah.surahNumber;
+        audioState.currentlyPlayingAyah = ayah.ayahNumber;
+        audioState.currentlyPlayingAudioURL = ayah.audioUrl;
+        audioState.element.addEventListener("timeupdate", () => {
+          audioState.playbackProgress = audioState.element?.currentTime || 0;
+        });
+        audioState.element.addEventListener("ended", () => {
+          audioState.isPlaying = false;
+          audioState.playbackProgress = 0;
+          if (audioState.continuousPlayback) moveNextAyah();
+        });
+      }
+      return audioState.element;
+    }
+
+    function playVerifiedRecitation() {
+      const audio = prepareVerifiedRecitation();
+      if (!audio) return;
+      audio.play().then(() => {
+        audioState.isPlaying = true;
+        console.info("NIYYAH audio", {
+          currentlyPlayingSurah: audioState.currentlyPlayingSurah,
+          currentlyPlayingAyah: audioState.currentlyPlayingAyah,
+          currentlyPlayingAudioURL: audioState.currentlyPlayingAudioURL
+        });
+      }).catch(() => {
+        showToast("Tap again or check your connection to play verified recitation");
+      });
+    }
+
+    function pauseVerifiedRecitation() {
+      if (!audioState.element) return;
+      audioState.element.pause();
+      audioState.isPlaying = false;
+      audioState.playbackProgress = audioState.element.currentTime || 0;
+    }
+
+    function restartVerifiedRecitation() {
+      const audio = prepareVerifiedRecitation();
+      if (!audio) return;
+      audio.currentTime = 0;
+      playVerifiedRecitation();
+    }
+
     document.addEventListener("click", event => {
       const nav = event.target.closest("[data-nav]");
       if (nav) {
@@ -3750,6 +4600,22 @@
       }
 
       const button = event.target.closest("[data-action]");
+      const onboardingFocusButton = event.target.closest("[data-onboarding-focus]");
+      if (onboardingFocusButton) {
+        state.onboardingFocus = onboardingFocusButton.dataset.onboardingFocus || "understand";
+        saveState();
+        renderEntry();
+        return;
+      }
+
+      const onboardingCircleButton = event.target.closest("[data-onboarding-circle]");
+      if (onboardingCircleButton) {
+        state.onboardingCircle = onboardingCircleButton.dataset.onboardingCircle || "family";
+        saveState();
+        renderEntry();
+        return;
+      }
+
       const wordButton = event.target.closest("[data-word]");
       if (wordButton) {
         openWord(wordButton.dataset.word);
@@ -3827,6 +4693,30 @@
         return;
       }
 
+      const circleFormatButton = event.target.closest("[data-circle-format]");
+      if (circleFormatButton) {
+        applyCircleFormat(circleFormatButton.dataset.circleFormat);
+        return;
+      }
+
+      const circleFlowActionButton = event.target.closest("[data-circle-flow-action]");
+      if (circleFlowActionButton) {
+        state.circleFlowAction = circleFlowActionButton.dataset.circleFlowAction;
+        render();
+        showToast(state.circleFlowAction === "join" ? "Enter your private circle code" : "Start a circle selected");
+        return;
+      }
+
+      const circleTemplateButton = event.target.closest("[data-circle-template-choice]");
+      if (circleTemplateButton) {
+        state.activeChallengeID = circleTemplateButton.dataset.circleTemplateChoice;
+        const templateInput = document.getElementById("circle-template");
+        if (templateInput) templateInput.value = state.activeChallengeID;
+        render();
+        showToast("Journey selected");
+        return;
+      }
+
       const circleShareButton = event.target.closest("[data-circle-share]");
       if (circleShareButton) {
         shareCircleInvite(circleShareButton.dataset.circleShare);
@@ -3870,6 +4760,10 @@
       if (!button) return;
 
       if (button.dataset.action === "entry-choice") show("entry-choice");
+      if (button.dataset.action === "entry-skip") {
+        markOnboardingComplete();
+        show("home");
+      }
       if (button.dataset.action === "entry-next") moveEntry("next");
       if (button.dataset.action === "entry-prev") moveEntry("previous");
       if (button.dataset.action === "continue") show("ayah");
@@ -3893,16 +4787,10 @@
         window.location.href = "../auth/?next=../app/";
       }
       if (button.dataset.action === "remove-profile") {
-        state.profile = null;
-        state.circle = null;
-        state.circleDailyStatuses = new Set();
-        state.duaPulseStatus = "";
-        localStorage.removeItem("niyyah-auth-user");
-        localStorage.removeItem("niyyah-profile");
-        localStorage.removeItem("niyyah-circle-daily-statuses");
-        localStorage.removeItem("niyyah-dua-pulse-status");
-        render();
-        showToast("Signed out");
+        signOutLocalProfile();
+      }
+      if (button.dataset.action === "delete-account") {
+        deleteAccountAndLocalData();
       }
       if (button.dataset.action === "leave-circle") {
         state.circle = null;
@@ -3948,6 +4836,11 @@
         state.reviewSurahNumber = null;
         show("ayah");
       }
+      if (button.dataset.action === "play-recitation") playVerifiedRecitation();
+      if (button.dataset.action === "pause-recitation") pauseVerifiedRecitation();
+      if (button.dataset.action === "restart-recitation") restartVerifiedRecitation();
+      if (button.dataset.action === "previous-audio-ayah") movePreviousAyah();
+      if (button.dataset.action === "next-audio-ayah") moveNextAyah();
       if (button.dataset.action === "understand") {
         state.tafsirOpen = !state.tafsirOpen;
         if (state.tafsirOpen) state.understandingViewed.add(currentAyah().id);
