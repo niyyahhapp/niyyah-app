@@ -167,7 +167,7 @@
 
     <button id="google-login" type="button">Continue with Google</button>
     <button id="apple-login" class="apple" type="button">Continue with Apple</button>
-    <a class="button secondary" href="../app/">Open App Preview</a>
+    <a class="button secondary" href="../app/">Open NIYYAH</a>
     <a class="button secondary" href="../">Back to Hub</a>
 
     <div class="profile" id="profile">
@@ -280,7 +280,7 @@
       if (data.session?.user) {
         saveUser(data.session.user);
         const backedUp = await syncProfile(data.session.user);
-        status.textContent = backedUp ? "Signed in. Profile backup is ready. Opening the app preview soon..." : status.textContent;
+        status.textContent = backedUp ? "Signed in. Profile backup is ready. Opening NIYYAH..." : status.textContent;
         if (backedUp) window.setTimeout(() => location.href = nextURL(), 900);
       } else {
         status.textContent = "Login is configured. Continue with Google, or use Apple after the Apple provider is enabled in Supabase.";
