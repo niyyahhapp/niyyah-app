@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NIYYAH Login</title>
-  <meta name="description" content="NIYYAH login page prepared for Supabase Auth.">
+  <meta name="description" content="Sign in to NIYYAH in the iPhone app.">
   <style>
     :root {
       --cream: #fff8ed;
@@ -243,16 +243,14 @@
     }
 
       if (!configured) {
-      status.textContent = "Login is not activated yet. Add the Supabase URL and publishable anon key in auth/auth-config.js, then enable Google and Apple providers in Supabase Auth.";
-      googleButton.textContent = "Google Login Not Connected Yet";
-      appleButton.textContent = "Apple Login Not Connected Yet";
-      googleButton.setAttribute("aria-disabled", "true");
-      appleButton.setAttribute("aria-disabled", "true");
-      googleButton.addEventListener("click", () => {
-        status.textContent = "Still not connected. Add Supabase config and enable Google provider first.";
+      status.textContent = "Sign in is available in the NIYYAH iPhone app. This browser preview does not handle account sign-in.";
+      googleButton.textContent = "Return to NIYYAH";
+      appleButton.textContent = "Return to NIYYAH";
+            googleButton.addEventListener("click", () => {
+        window.location.href = "../";
       });
       appleButton.addEventListener("click", () => {
-        status.textContent = "Still not connected. Apple Sign In also requires Apple Developer setup and Apple provider enabled in Supabase.";
+        window.location.href = "../";
       });
     } else {
       const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
@@ -262,7 +260,7 @@
         const profileRow = {
           id: user.id,
           display_name: user.user_metadata?.full_name || user.email || "NIYYAH User",
-          username: usernameFromEmail(user.email || user.id),
+          username: "niyyah_" + String(user.id || "").replace(/-/g, "").slice(0, 12),
           email: user.email || null,
           avatar_url: user.user_metadata?.avatar_url || null,
           provider: providerFromUser(user),
@@ -270,7 +268,7 @@
         };
         const { error } = await supabase.from("profiles").upsert(profileRow, { onConflict: "id" });
         if (error) {
-          status.textContent = "Signed in locally, but profile backup is not ready yet: " + error.message + "\nRun the Supabase setup SQL, then try again.";
+          status.textContent = "We could not save your profile right now. Please try again.";
           return false;
         }
         return true;
@@ -283,7 +281,7 @@
         status.textContent = backedUp ? "Signed in. Profile backup is ready. Opening NIYYAH..." : status.textContent;
         if (backedUp) window.setTimeout(() => location.href = nextURL(), 900);
       } else {
-        status.textContent = "Login is configured. Continue with Google, or use Apple after the Apple provider is enabled in Supabase.";
+        status.textContent = "Continue with Google or Apple to sign in.";
       }
 
       async function startOAuth(provider) {
@@ -293,7 +291,7 @@
           provider,
           options: { redirectTo }
         });
-        if (error) status.textContent = `${provider === "apple" ? "Apple" : "Google"} login could not start: ${error.message}`;
+        if (error) status.textContent = "We could not start sign-in right now. Please try again.";
       }
 
       googleButton.addEventListener("click", () => startOAuth("google"));
