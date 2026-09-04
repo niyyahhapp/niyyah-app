@@ -3003,7 +3003,7 @@
             <div class="avatar">${escapeHTML(profileInitials(profileDisplayName()))}</div>
             <div>
               <strong>${escapeHTML(profileDisplayName())}</strong>
-              <span>@${escapeHTML(profileUsername())} • Circle profile active</span>
+              <span>Private circle profile</span>
             </div>
           </div>
         ` : `
@@ -3255,19 +3255,15 @@
       const content = document.getElementById("profile-content");
       if (!content) return;
       document.querySelectorAll("[data-profile-home-button]").forEach(button => {
-        button.textContent = state.profile ? `@${profileUsername()}` : "Create profile";
+        button.textContent = state.profile ? "Profile" : "Create profile";
       });
       if (!state.profile) {
         content.innerHTML = `
           <div class="card">
             <p class="eyebrow">Account setup</p>
             <h2 class="title">Your NIYYAH profile stays simple</h2>
-            <p class="body" style="margin-top:12px">Use Google or Apple login to back up your progress and keep your NIYYAH profile connected across devices once auth is activated.</p>
-            <button class="secondary" data-action="continue-google-signin">Continue with Google</button>
-            <button class="secondary" data-action="continue-apple-signin">Continue with Apple</button>
-            <div class="divider"></div>
+            <p class="body" style="margin-top:12px">Create a display name for private circles on this device. The NIYYAH iPhone app supports Google and Apple sign-in for private circle membership.</p>
             <input id="profile-name" class="mini-input" type="text" maxlength="40" placeholder="Display name" aria-label="Display name">
-            <input id="profile-username" class="mini-input" type="text" maxlength="20" placeholder="Username" aria-label="Username">
             <button class="primary" data-action="create-profile">Create Profile on This Device</button>
           </div>
           <div class="card">
@@ -3286,7 +3282,7 @@
             <div class="avatar" style="width:64px;height:64px;flex-basis:64px;font-size:20px">${escapeHTML(profileInitials(profileDisplayName()))}</div>
             <div>
               <strong style="font-size:20px">${escapeHTML(profileDisplayName())}</strong>
-              <span>@${escapeHTML(profileUsername())}</span>
+              <span>Private circle profile</span>
             </div>
           </div>
           <div class="stats" style="margin-top:18px">
@@ -3296,15 +3292,15 @@
           <div class="info-stack">
             <div class="info-block"><strong>Current Journey</strong><p class="body">${escapeHTML(journeys.find(item => item.id === state.activeJourneyID)?.title || "Understanding Juz 30")}</p></div>
             <div class="info-block"><strong>Circle</strong><p class="body">${escapeHTML(state.circle?.name || "No circle joined yet")}</p></div>
-            <div class="info-block"><strong>Privacy</strong><p class="body">Friends see your display name, username, circle progress, and whether you reflected today. Your private journal stays private.</p></div>
-            <div class="info-block"><strong>Account Control</strong><p class="body">Sign out keeps your saved learning on this device. Delete account removes your local profile, journal, progress, favorites, vocabulary, and circle data.</p></div>
+            <div class="info-block"><strong>Privacy</strong><p class="body">Private circle members see your display name and circle progress. Your journal stays on your device.</p></div>
+            <div class="info-block"><strong>Account Control</strong><p class="body">Sign out keeps learning saved on this device. For an account deletion request, use the account deletion page.</p></div>
             <div class="info-block"><strong>Sources & Trust</strong><p class="body">NIYYAH cites verified source material where available and leaves unsourced religious content out instead of guessing.</p></div>
           </div>
           <a class="secondary" href="../sources-trust.html">Sources & Trust</a>
           <a class="secondary" href="../feedback.html">Send Feedback</a>
           <button class="secondary" data-action="open-circles">View NIYYAH Circle</button>
           <button class="quiet" data-action="remove-profile">Sign Out</button>
-          <button class="danger" data-action="delete-account">Delete Account & Local Data</button>
+          <a class="danger" href="../account-deletion.html">Account Deletion</a>
         </div>
       `;
     }
@@ -4164,9 +4160,7 @@
 
     function createProfile() {
       const nameInput = document.getElementById("profile-name");
-      const usernameInput = document.getElementById("profile-username");
       const displayName = nameInput?.value.trim();
-      const username = usernameInput?.value.trim().replace(/^@/, "");
       if (!displayName) {
         nameInput?.focus();
         return;
@@ -4174,7 +4168,7 @@
       state.profile = {
         id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
         displayName,
-        username: username || usernameFromName(displayName),
+        username: usernameFromName(displayName),
         createdAt: new Date().toISOString()
       };
       render();
