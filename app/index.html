@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (ios) { window.location.replace("https://apps.apple.com/app/id6799808008"); }
+    })();
+  </script>
   <title>NIYYAH App</title>
   <style>
     @font-face {
