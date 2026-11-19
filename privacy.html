@@ -20,7 +20,7 @@
     <p><a href="index.html">Back to NIYYAH</a></p>
     <section class="card">
       <h1>Privacy Policy</h1>
-      <p class="note">Last updated: November 8, 2026</p>
+      <p class="note">Last updated: November 18, 2026</p>
 
       <h2>Overview</h2>
       <p>NIYYAH is a Qur'an understanding and reflection app designed to help users read, understand, reflect, and journal one ayah at a time. We aim to collect as little personal information as possible.</p>
@@ -42,6 +42,16 @@
       <h2>Reporting And Hiding</h2>
       <p>If a shared reflection is inappropriate, you can report it or hide posts from that person. A report stores the reflection, your account ID, and the reason you chose, so the NIYYAH team can review it and remove content that breaks our guidelines. Reports are visible only to the NIYYAH team, not to other users. Hiding someone is saved only on your device.</p>
 
+      <h2>Recite &amp; Check And Hifz Mode (Microphone)</h2>
+      <p>Recite &amp; Check and Hifz Mode use your microphone only while you are reciting, and only after you allow microphone access. Your voice is processed entirely on your iPhone by speech models stored on your device. Your recordings are never uploaded to NIYYAH, Supabase, or anyone else.</p>
+      <p>A short recording of your most recent recitation may be kept temporarily on your device so you can tap “Hear yourself” and compare it with the correct recitation. NIYYAH also saves a short history of the words you missed (the surah, ayah, and word) on your device so you can practise them. You can turn off microphone access at any time in your iPhone's Settings.</p>
+
+      <h2>Vowel Check Download (Optional)</h2>
+      <p>The vowel check uses an additional speech model (about 373 MB). It is only downloaded if you choose to download it, from Hugging Face (huggingface.co). As with any download, Hugging Face may see your device's internet address. NIYYAH does not send your name, email, account, or voice with this download. The model then runs entirely on your device.</p>
+
+      <h2>Surah Game And Word Strength</h2>
+      <p>The Surah Game uses word-by-word meanings and transliteration from Quran.com that are built into the app. Your game results and word strength are stored only on your device. When you play a word's audio, NIYYAH streams that word's recitation from Quran.com's audio server, which may see your device's internet address. No personal information is sent.</p>
+
       <h2>Word Meanings</h2>
       <p>When you tap “Word Meanings” on an ayah, NIYYAH asks Quran.com for the word-by-word meanings of that ayah. The request includes only the surah and ayah number. Quran.com may see your device's internet address, as with any website, but NIYYAH does not send your name, email, or account to Quran.com. Words you save stay on your device.</p>
 
@@ -61,7 +71,7 @@
       <p>NIYYAH is currently free and does not offer in-app purchases or subscriptions.</p>
 
       <h2>Data Sharing</h2>
-      <p>NIYYAH does not sell personal data or use it for advertising. NIYYAH uses Supabase to authenticate signed-in users, sync private Circle data, store reflections you choose to share with your Circle, and keep your optional private journal backup. NIYYAH loads word-by-word meanings from Quran.com without sending your personal information. NIYYAH may use an email or waitlist provider to send requested updates. No third-party analytics SDK is enabled in the app.</p>
+      <p>NIYYAH does not sell personal data or use it for advertising. NIYYAH uses Supabase to authenticate signed-in users, sync private Circle data, store reflections you choose to share with your Circle, and keep your optional private journal backup. NIYYAH loads word-by-word meanings and word audio from Quran.com, and the optional vowel check model from Hugging Face, without sending your personal information. Recitation checking happens on your device, and your voice is never uploaded. NIYYAH may use an email or waitlist provider to send requested updates. No third-party analytics SDK is enabled in the app.</p>
 
       <h2>Deleting Your Data</h2>
       <p>When signed in, open your profile and choose “Request Account Deletion” to submit an authenticated account-deletion request. Signing out removes the protected sign-in session from that device. Local reflections, progress, vocabulary, and Circle data remain on the device until the app is deleted. See the <a href="account-deletion.html">Account Deletion</a> page for details.</p>
